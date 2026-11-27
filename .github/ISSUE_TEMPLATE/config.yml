@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerability Report
+    url: https://github.com/ahmedessm1996/learn-step/security/advisories/new
+    about: للإبلاغ الخاص عن أي ثغرات أمنية

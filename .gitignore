@@ -1,0 +1,92 @@
+# ==============================================================================
+# StepLearn Monorepo (.gitignore)
+# ==============================================================================
+
+# Local archives, backups, and agent/tool metadata
+_local_backup/
+*.zip
+.aistudio/
+.claude/
+.agents/
+.gemini/
+
+# Node.js & Vite (Web)
+node_modules/
+jspm_packages/
+web/dist/
+web/dist-ssr/
+**/dist/
+**/dist-ssr/
+coverage/
+*.lcov
+.nyc_output/
+
+# Android & Gradle (Mobile)
+.gradle/
+**/.gradle/
+**/build/
+local.properties
+mobile/local.properties
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+*.keystore
+*.jks
+.cxx/
+captures/
+*.hprof
+
+# .NET compiler build intermediates (published browser assets are tracked)
+**/bin/
+**/obj/
+
+# Test scratchpads & local dumps
+test_slot_builder_results.json
+tests/ui_empirical_results.json
+test_m1_review.cjs
+test_simulator_empirical.cjs
+test_slot_builder_empirical.cjs
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+!web/public/**
+!mobile/app/src/main/res/**
+
+# Logs & runtime dumps
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS & IDE files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.bak
+*.tmp
+*.orig

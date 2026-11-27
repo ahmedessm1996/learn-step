@@ -1,0 +1,413 @@
+[
+  {
+    "id": "css-25-z-index",
+    "legacyId": "css:24",
+    "title": "ترتيب الطبقات والعمق البصري عبر z-index",
+    "skill": "الطبقات وتدفق المحتوى",
+    "order": 24,
+    "concept": "تتحكم z-index في ترتيب الطبقات على المحور العمودي للشاشة (العمق): الرقم الأكبر يعلو الرقم الأصغر، بشرط أن يمتلك العنصر position غير static (أو يكون ضمن Flex/Grid).",
+    "whyUse": "عندما يتراكب عنصران في الصفحة ويختفي المهم خلف الآخر، كيف تحدد من يظهر في الأمام ومن يتراجع للخلف؟",
+    "browserMechanics": "يرتب المتصفح العناصر داخل سياق التكديس (Stacking Context) تصاعديًا حسب z-index قبل مرحلة الرسم ليضمن ظهور الطبقة الأعلى فوق الأدنى.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/z-index",
+    "code": ".tiles span:first-child { position: relative; z-index: 1; }",
+    "breakdown": [
+      "خاصية z-index: تحدد رتبة التراكب على المحور Z ثلاثي الأبعاد.",
+      "سياق التكديس Stacking Context: يحكم نطاق المقارنة بين العناصر المتراكبة.",
+      "شرط التموضع: تتطلب z-index أن يكون العنصر متموضعاً بنوع غير static لتعمل."
+    ],
+    "steps": [
+      {
+        "id": "css-25-z-index-step-1",
+        "title": "رفع طبقة العنصر المتموضع",
+        "objective": "استبدال `z-index: 1` بـ `z-index: 5` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `z-index: 1` إلى `z-index: 5` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `z-index: 5` عمليًا في درس «ترتيب الطبقات والعمق البصري عبر z-index».",
+        "expectedLine": "z-index: 5",
+        "from": "z-index: 1",
+        "to": "z-index: 5",
+        "task": "عدّل `z-index: 1` إلى `z-index: 5` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `z-index: 1` إلى `z-index: 5` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:\\bposition\\s*:\\s*static\\b[\\s\\S]*?\\bz-index\\s*:|\\bz-index\\s*:[\\s\\S]*?\\bposition\\s*:\\s*static\\b)",
+            "flags": "i",
+            "type": "regex",
+            "message": "خاصية z-index لا تعمل على العناصر ذات التموضع الافتراضي position: static. عيّن position بقيمة relative أو absolute أو fixed أولاً."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*\\bposition\\s*:\\s*(?:relative|absolute|fixed|sticky)\\b)(?![\\s\\S]*\\bdisplay\\s*:\\s*(?:flex|grid)\\b)[\\s\\S]*\\bz-index\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "حددت طبقة z-index دون تحديد تموضع للعنصر. عناصر التدفق الطبيعي تتجاهل z-index ما لم تكن ذات تموضع مخصص."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `z-index: 1` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «ترتيب الطبقات والعمق البصري عبر z-index»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: z-index: 5",
+          "الحل الدقيق للخطوة: z-index: 5"
+        ]
+      },
+      {
+        "id": "css-25-z-index-step-2",
+        "title": "اختبار طبقة تراكب أعلى",
+        "objective": "استبدال `z-index: 5` بـ `z-index: 10` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `z-index: 5` إلى `z-index: 10` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `z-index: 10` عمليًا في درس «ترتيب الطبقات والعمق البصري عبر z-index».",
+        "expectedLine": "z-index: 10",
+        "from": "z-index: 5",
+        "to": "z-index: 10",
+        "task": "عدّل `z-index: 5` إلى `z-index: 10` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `z-index: 5` إلى `z-index: 10` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:\\bposition\\s*:\\s*static\\b[\\s\\S]*?\\bz-index\\s*:|\\bz-index\\s*:[\\s\\S]*?\\bposition\\s*:\\s*static\\b)",
+            "flags": "i",
+            "type": "regex",
+            "message": "خاصية z-index لا تعمل على العناصر ذات التموضع الافتراضي position: static. عيّن position بقيمة relative أو absolute أو fixed أولاً."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*\\bposition\\s*:\\s*(?:relative|absolute|fixed|sticky)\\b)(?![\\s\\S]*\\bdisplay\\s*:\\s*(?:flex|grid)\\b)[\\s\\S]*\\bz-index\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "حددت طبقة z-index دون تحديد تموضع للعنصر. عناصر التدفق الطبيعي تتجاهل z-index ما لم تكن ذات تموضع مخصص."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `z-index: 5` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «ترتيب الطبقات والعمق البصري عبر z-index»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: z-index: 10",
+          "الحل الدقيق للخطوة: z-index: 10"
+        ]
+      },
+      {
+        "id": "css-25-z-index-step-3",
+        "title": "اعتماد رتبة الطبقة النهائية",
+        "objective": "استبدال `z-index: 10` بـ `z-index: 20` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `z-index: 10` إلى `z-index: 20` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `z-index: 20` عمليًا في درس «ترتيب الطبقات والعمق البصري عبر z-index».",
+        "expectedLine": "z-index: 20",
+        "from": "z-index: 10",
+        "to": "z-index: 20",
+        "task": "عدّل `z-index: 10` إلى `z-index: 20` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `z-index: 10` إلى `z-index: 20` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:\\bposition\\s*:\\s*static\\b[\\s\\S]*?\\bz-index\\s*:|\\bz-index\\s*:[\\s\\S]*?\\bposition\\s*:\\s*static\\b)",
+            "flags": "i",
+            "type": "regex",
+            "message": "خاصية z-index لا تعمل على العناصر ذات التموضع الافتراضي position: static. عيّن position بقيمة relative أو absolute أو fixed أولاً."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*\\bposition\\s*:\\s*(?:relative|absolute|fixed|sticky)\\b)(?![\\s\\S]*\\bdisplay\\s*:\\s*(?:flex|grid)\\b)[\\s\\S]*\\bz-index\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "حددت طبقة z-index دون تحديد تموضع للعنصر. عناصر التدفق الطبيعي تتجاهل z-index ما لم تكن ذات تموضع مخصص."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `z-index: 10` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «ترتيب الطبقات والعمق البصري عبر z-index»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: z-index: 20",
+          "الحل الدقيق للخطوة: z-index: 20"
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": ".modal {\n  z-index: 9999;\n  /* النتيجة: النافذة المنبثقة لا تزال تختفي خلف الصور والبطاقات! */\n}",
+      "fixedCode": ".modal {\n  position: fixed;\n  z-index: 9999;\n}",
+      "question": "لماذا لم تظهر النافذة المنبثقة .modal في مقدمة الشاشة رغم إعطائها z-index: 9999؟",
+      "explanation": "خاصية z-index لا تعمل إطلاقاً على العناصر ذات التموضع الافتراضي position: static؛ لكي تصبح z-index فعالة يجب تعيين position بقيمة fixed أو absolute أو relative.",
+      "options": [
+        "خاصية z-index لا تعمل على العناصر غير المتموضعة (position: static) ويجب تحديد تموضع مثل fixed أولاً",
+        "يجب وضع z-index بين علامات تنصيص",
+        "المتصفح لا يقبل أرقام z-index أكبر من 100",
+        "يجب تحويل النافذة إلى كود JavaScript"
+      ],
+      "correctOptionIndex": 0
+    }
+  },
+  {
+    "id": "css-26-overflow",
+    "legacyId": "css:25",
+    "title": "إدارة تدفق المحتوى الفائض عبر overflow",
+    "skill": "الطبقات وتدفق المحتوى",
+    "order": 25,
+    "concept": "تحدد overflow مصير المحتوى الفائض: visible يتركه يخرج، hidden يقصه عند الحافة، scroll يُظهر أشرطة تمرير دائمًا، وauto يظهرها عند الحاجة فقط.",
+    "whyUse": "عندما يكون الصندوق صغيرًا والنص أطول منه، هل يفيض النص فوق العناصر المجاورة أم يختفي أم يظهر شريط تمرير؟ القرار بيد خاصية واحدة.",
+    "browserMechanics": "ينشئ المتصفح منطقة قص (Clip Box) عند حدود padding عندما تكون overflow غير visible، ويسمح بالتمرير الداخلي مع scroll وauto.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/overflow",
+    "code": ".card { width: 180px; height: 70px; overflow: hidden; }",
+    "breakdown": [
+      "خاصية overflow: تضبط سلوك محرك العرض عند فيضان المحتوى خارج الصندوق.",
+      "القيمة auto: الحل الأمثل لإظهار شريط التمرير فقط عند تجاوز المحتوى للأبعاد.",
+      "توليد BFC: عزل التخطيط الداخلي واحتواء العناصر الفائضة ضمن حدود الحاوية."
+    ],
+    "steps": [
+      {
+        "id": "css-26-overflow-step-1",
+        "title": "تفعيل التحكم في المحتوى الفائض",
+        "objective": "استبدال `hidden` بـ `auto` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `hidden` إلى `auto` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `auto` عمليًا في درس «إدارة تدفق المحتوى الفائض عبر overflow».",
+        "expectedLine": "auto",
+        "from": "hidden",
+        "to": "auto",
+        "task": "عدّل `hidden` إلى `auto` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `hidden` إلى `auto` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "\\b(colour|collor|background-colour|background-collor|backgroud-color|bg-color|algn-items|align-item|alig-items|justfy-content|justify-contents|dispaly|disply|pad-left|pading|paddng|magin|mrgin|positon|posistion|zindex|font-colour|font-collor|widht|heigth)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في اسم الخاصية: تحقق من كتابة الكلمة الإنجليزية بدقة وفق معيار CSS (مثل color بدلاً من colour أو collor)."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `hidden` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «إدارة تدفق المحتوى الفائض عبر overflow»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: auto",
+          "الحل الدقيق للخطوة: auto"
+        ]
+      },
+      {
+        "id": "css-26-overflow-step-2",
+        "title": "اختبار نمط فيضان بديل",
+        "objective": "استبدال `auto` بـ `scroll` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `auto` إلى `scroll` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `scroll` عمليًا في درس «إدارة تدفق المحتوى الفائض عبر overflow».",
+        "expectedLine": "scroll",
+        "from": "auto",
+        "to": "scroll",
+        "task": "عدّل `auto` إلى `scroll` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `auto` إلى `scroll` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "\\b(colour|collor|background-colour|background-collor|backgroud-color|bg-color|algn-items|align-item|alig-items|justfy-content|justify-contents|dispaly|disply|pad-left|pading|paddng|magin|mrgin|positon|posistion|zindex|font-colour|font-collor|widht|heigth)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في اسم الخاصية: تحقق من كتابة الكلمة الإنجليزية بدقة وفق معيار CSS (مثل color بدلاً من colour أو collor)."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `auto` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «إدارة تدفق المحتوى الفائض عبر overflow»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: scroll",
+          "الحل الدقيق للخطوة: scroll"
+        ]
+      },
+      {
+        "id": "css-26-overflow-step-3",
+        "title": "اعتماد نمط معالجة الفائض النهائي",
+        "objective": "استبدال `scroll` بـ `visible` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `scroll` إلى `visible` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `visible` عمليًا في درس «إدارة تدفق المحتوى الفائض عبر overflow».",
+        "expectedLine": "visible",
+        "from": "scroll",
+        "to": "visible",
+        "task": "عدّل `scroll` إلى `visible` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `scroll` إلى `visible` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "\\b(colour|collor|background-colour|background-collor|backgroud-color|bg-color|algn-items|align-item|alig-items|justfy-content|justify-contents|dispaly|disply|pad-left|pading|paddng|magin|mrgin|positon|posistion|zindex|font-colour|font-collor|widht|heigth)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في اسم الخاصية: تحقق من كتابة الكلمة الإنجليزية بدقة وفق معيار CSS (مثل color بدلاً من colour أو collor)."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `scroll` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «إدارة تدفق المحتوى الفائض عبر overflow»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: visible",
+          "الحل الدقيق للخطوة: visible"
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": ".preview-box {\n  width: 300px;\n  height: 150px;\n  /* المحتوى يفيض ويشوه الصفحة */\n}",
+      "fixedCode": ".preview-box {\n  width: 300px;\n  height: 150px;\n  overflow: auto;\n}",
+      "question": "كيف نحل مشكلة خروج النصوص الطويلة خارج حدود الصندوق .preview-box وتشويها للتصميم؟",
+      "explanation": "القيمة الافتراضية للفيضان هي visible التي تسمح للمحتوى بالسيلان خارج الصندوق؛ وإضافة overflow: auto تُمكن شريط التمرير التلقائي عند زيادة المحتوى مع بقائه محصوراً داخل حدود الصندوق.",
+      "options": [
+        "يجب مضاعفة حجم الخط font-size",
+        "إضافة خاصية overflow: auto لاحتواء المحتوى الزائد وتمكين التمرير عند الحاجة",
+        "يجب حذف النصوص الطويلة من صفحة HTML",
+        "خاصية width هي المسؤولة وحدها عن قص المحتوى"
+      ],
+      "correctOptionIndex": 1
+    }
+  },
+  {
+    "id": "css-27-float",
+    "legacyId": "css:26",
+    "title": "تعويم العناصر وحل مشكلات التدفق عبر float",
+    "skill": "الطبقات وتدفق المحتوى",
+    "order": 26,
+    "concept": "تدفع float العنصر يمينًا أو يسارًا وتسمح للنصوص والعناصر التالية بالالتفاف حوله، وتُستخدم clear أو overflow: hidden لمنع انهيار ارتفاع الحاوية الأب.",
+    "whyUse": "قبل ظهور Flexbox وGrid، كيف كان المطورون يجعلون النص يلتف بجانب صورة أو شارة صغيرة؟ خاصية float تزيح العنصر إلى طرف السطر.",
+    "browserMechanics": "تخرج العناصر العائمة من التدفق العمودي العادي وتلتف حولها صناديق الأسطر، لذا لا يحسب الأب ارتفاعها ما لم ينشئ سياق تنسيق جديدًا.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Floats",
+    "code": ".card a[title] { float: left; margin: 0 8px 8px 0; }",
+    "breakdown": [
+      "خاصية float: تدفع العنصر لليمين أو اليسار وتتيح للنصوص الالتفاف حوله.",
+      "انهيار ارتفاع الحاوية: التحدي الكلاسيكي لغياب العناصر العائمة عن حساب الارتفاع.",
+      "خاصية clear: تجبر العنصر على الهبوط أسفل أي عنصر عائم يسبقه."
+    ],
+    "steps": [
+      {
+        "id": "css-27-float-step-1",
+        "title": "توجيه تعويم العنصر",
+        "objective": "استبدال `left` بـ `right` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `left` إلى `right` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `right` عمليًا في درس «تعويم العناصر وحل مشكلات التدفق عبر float».",
+        "expectedLine": "right",
+        "from": "left",
+        "to": "right",
+        "task": "عدّل `left` إلى `right` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `left` إلى `right` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "\\b(colour|collor|background-colour|background-collor|backgroud-color|bg-color|algn-items|align-item|alig-items|justfy-content|justify-contents|dispaly|disply|pad-left|pading|paddng|magin|mrgin|positon|posistion|zindex|font-colour|font-collor|widht|heigth)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في اسم الخاصية: تحقق من كتابة الكلمة الإنجليزية بدقة وفق معيار CSS (مثل color بدلاً من colour أو collor)."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `left` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «تعويم العناصر وحل مشكلات التدفق عبر float»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: right",
+          "الحل الدقيق للخطوة: right"
+        ]
+      },
+      {
+        "id": "css-27-float-step-2",
+        "title": "اختبار جهة تعويم عكسية",
+        "objective": "استبدال `right` بـ `left` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `right` إلى `left` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `left` عمليًا في درس «تعويم العناصر وحل مشكلات التدفق عبر float».",
+        "expectedLine": "left",
+        "from": "right",
+        "to": "left",
+        "task": "عدّل `right` إلى `left` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `right` إلى `left` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "\\b(colour|collor|background-colour|background-collor|backgroud-color|bg-color|algn-items|align-item|alig-items|justfy-content|justify-contents|dispaly|disply|pad-left|pading|paddng|magin|mrgin|positon|posistion|zindex|font-colour|font-collor|widht|heigth)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في اسم الخاصية: تحقق من كتابة الكلمة الإنجليزية بدقة وفق معيار CSS (مثل color بدلاً من colour أو collor)."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `right` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «تعويم العناصر وحل مشكلات التدفق عبر float»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: left",
+          "الحل الدقيق للخطوة: left"
+        ]
+      },
+      {
+        "id": "css-27-float-step-3",
+        "title": "اعتماد التوجيه النهائي للتعويم",
+        "objective": "استبدال `left` بـ `center` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `left` إلى `center` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `center` عمليًا في درس «تعويم العناصر وحل مشكلات التدفق عبر float».",
+        "expectedLine": "center",
+        "from": "left",
+        "to": "center",
+        "task": "عدّل `left` إلى `center` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `left` إلى `center` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "\\b(colour|collor|background-colour|background-collor|backgroud-color|bg-color|algn-items|align-item|alig-items|justfy-content|justify-contents|dispaly|disply|pad-left|pading|paddng|magin|mrgin|positon|posistion|zindex|font-colour|font-collor|widht|heigth)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في اسم الخاصية: تحقق من كتابة الكلمة الإنجليزية بدقة وفق معيار CSS (مثل color بدلاً من colour أو collor)."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `left` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «تعويم العناصر وحل مشكلات التدفق عبر float»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: center",
+          "الحل الدقيق للخطوة: center"
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": ".container {\n  border: 2px solid red;\n  /* المشكلة: الحاوية ارتفاعها 0px وانهارت لأن الأبناء يحملون float */\n}\n.image-child {\n  float: left;\n}",
+      "fixedCode": ".container {\n  display: flow-root;\n  border: 2px solid red;\n}\n.image-child {\n  float: left;\n}",
+      "question": "لماذا انهار ارتفاع الحاوية .container إلى صفر وخرج الأبناء العائمون خارج إطارها الأحمر؟",
+      "explanation": "العناصر العائمة float تخرج من حساب ارتفاع الأب الطبيعي؛ ولإجبار الأب على احتواء أبنائه العائمين نستخدم display: flow-root الحديثة التي تنشئ سياق تنسيق كتلي BFC يحتوي العناصر العائمة بالكامل.",
+      "options": [
+        "خاصية float ملغاة تماماً ولا تعمل في المتصفحات",
+        "يجب إعطاء الأب ارتفاعاً ثابتاً height: 1000px",
+        "انهيار ارتفاع الأب سببه خروج الأبناء العائمين من التدفق، والحل إضافة display: flow-root للأب لاحتوائهم",
+        "الحدود الحمراء هي سبب الانهيار ويجب إزالتها"
+      ],
+      "correctOptionIndex": 2
+    }
+  }
+]

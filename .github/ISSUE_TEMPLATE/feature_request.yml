@@ -1,0 +1,27 @@
+name: Feature Request
+description: اقتراح ميزة جديدة أو تحسين للمنصة
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: المنصة المستهدفة (Target Platform)
+      options:
+        - Web (web/)
+        - Mobile Android (mobile/)
+        - Both (Web & Mobile)
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: وصف الميزة المقترحة
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: الفائدة التعليمية أو التقنية
+    validations:
+      required: false

@@ -1,0 +1,19 @@
+PROPRIETARY LICENSE — ALL RIGHTS RESERVED
+
+Copyright (c) 2026 Eng. Ahmed Essam El-Din Ashour (@ahmedessm1996)
+StepLearn (خطوة للتعلّم) — Web & Android Mobile Platforms
+
+All intellectual property rights, source code, educational curricula,
+interactive simulators, UI/UX designs, and documentation in this repository
+are the exclusive property of the author.
+
+Unauthorized copying, reproduction, modification, redistribution,
+or commercial use of any part of this repository, via any medium, is strictly
+prohibited without prior explicit written permission from the copyright holder.
+
+Third-Party Notices:
+- Third-party runtime assets and notices under `web/public/csharp-dotnet/`
+  (including .NET / Roslyn notices) remain governed by their respective
+  open-source licenses documented inside that directory.
+- Open-source packages declared in `web/package.json` and
+  `mobile/gradle/libs.versions.toml` remain subject to their respective licenses.

@@ -1,0 +1,38 @@
+name: Bug Report
+description: الإبلاغ عن خطأ برمجي في نسخة الويب أو الموبايل
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: المنصة (Platform)
+      options:
+        - Web (web/)
+        - Mobile Android (mobile/)
+        - Both (Web & Mobile)
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: وصف المشكلة
+      description: اشرح الخطأ بوضوح مع ذكر المسار أو رقم الدرس إن وجد.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: خطوات إعادة الإنتاج (Steps to Reproduce)
+      placeholder: |
+        1. افتح مسار ...
+        2. انتقل إلى الدرس ...
+        3. نفّذ ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: السلوك المتوقع (Expected Behavior)
+    validations:
+      required: true

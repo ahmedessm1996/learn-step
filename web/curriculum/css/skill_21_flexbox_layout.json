@@ -1,0 +1,526 @@
+[
+  {
+    "id": "css-79-flexbox-intro",
+    "legacyId": "css:78",
+    "title": "مقدمة في نظام التخطيط المرن Flexbox",
+    "skill": "ترتيب باستخدام Flexbox",
+    "order": 78,
+    "concept": "تفعيل display: flex على الحاوية يحول أبناءها المباشرين إلى عناصر مرنة تصطف في محور واحد، بينما تضبط gap المسافات بينها بنظافة.",
+    "whyUse": "ترتيب مجموعة أزرار أو بطاقات في صف متناسق بفجوات متساوية بينها دون حساب هوامش الأول والأخير هو بالضبط سبب وجود Flexbox.",
+    "browserMechanics": "تتولى خوارزمية Flex توزيع المساحة المتاحة على الأبناء وحساب الفجوات الداخلية في تمريرة تخطيط واحدة.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Flexbox",
+    "code": ".card .tiles { display: flex; gap: 8px; }",
+    "breakdown": [
+      "إعلان display: flex: يفعل نموذج الصندوق المرن على الحاوية ويطلق سياق FFC.",
+      "المحور الرئيسي والفرعي: يحكمان اتجاه حركة واصطفاف العناصر الأبناء.",
+      "خاصية gap: تنشئ فواصل بينية منتظمة ونظيفة بين العناصر المرنة."
+    ],
+    "steps": [
+      {
+        "id": "css-79-flexbox-intro-step-1",
+        "title": "تعديل الفاصل البيني للصندوق المرن",
+        "objective": "استبدال `8px` بـ `18px` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "غيّر القياس من `8px` إلى `18px` وراقب المساحة أو الزاوية المتأثرة مباشرة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `18px` عمليًا في درس «مقدمة في نظام التخطيط المرن Flexbox».",
+        "expectedLine": "18px",
+        "from": "8px",
+        "to": "18px",
+        "task": "غيّر القياس من `8px` إلى `18px` وراقب المساحة أو الزاوية المتأثرة مباشرة.",
+        "explanation": "تغيّر الرقم إلى `18px` يوضح حدود تأثير الخاصية على أبعاد الصندوق أو موضعه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:^|[;{\\s])(width|height|min-width|max-width|min-height|max-height|margin(?:-(?:top|right|bottom|left))?|padding(?:-(?:top|right|bottom|left))?|font-size|top|right|bottom|left|gap|row-gap|column-gap|border-width|border-radius|letter-spacing|word-spacing)\\s*:[^;}]*?\\b([1-9]\\d*(?:\\.\\d+)?)(?=\\s|;|\\n|\\}|$)",
+            "flags": "i",
+            "type": "regex",
+            "message": "القيمة الرقمية تفتقر إلى وحدة قياس صريحة (مثل px أو rem أو %). في CSS، الأرقام غير الصفرية للأبعاد تتطلب دائماً وحدة قياس."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `8px` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «مقدمة في نظام التخطيط المرن Flexbox»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: 18px",
+          "الحل الدقيق للخطوة: 18px"
+        ]
+      },
+      {
+        "id": "css-79-flexbox-intro-step-2",
+        "title": "اختبار فاصل بيني مدمج بديل",
+        "objective": "استبدال `18px` بـ `22px` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "غيّر القياس من `18px` إلى `22px` وراقب المساحة أو الزاوية المتأثرة مباشرة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `22px` عمليًا في درس «مقدمة في نظام التخطيط المرن Flexbox».",
+        "expectedLine": "22px",
+        "from": "18px",
+        "to": "22px",
+        "task": "غيّر القياس من `18px` إلى `22px` وراقب المساحة أو الزاوية المتأثرة مباشرة.",
+        "explanation": "تغيّر الرقم إلى `22px` يوضح حدود تأثير الخاصية على أبعاد الصندوق أو موضعه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:^|[;{\\s])(width|height|min-width|max-width|min-height|max-height|margin(?:-(?:top|right|bottom|left))?|padding(?:-(?:top|right|bottom|left))?|font-size|top|right|bottom|left|gap|row-gap|column-gap|border-width|border-radius|letter-spacing|word-spacing)\\s*:[^;}]*?\\b([1-9]\\d*(?:\\.\\d+)?)(?=\\s|;|\\n|\\}|$)",
+            "flags": "i",
+            "type": "regex",
+            "message": "القيمة الرقمية تفتقر إلى وحدة قياس صريحة (مثل px أو rem أو %). في CSS، الأرقام غير الصفرية للأبعاد تتطلب دائماً وحدة قياس."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `18px` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «مقدمة في نظام التخطيط المرن Flexbox»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: 22px",
+          "الحل الدقيق للخطوة: 22px"
+        ]
+      },
+      {
+        "id": "css-79-flexbox-intro-step-3",
+        "title": "اعتماد الفاصل البيني النهائي للحاوية المرنة",
+        "objective": "استبدال `22px` بـ `28px` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "غيّر القياس من `22px` إلى `28px` وراقب المساحة أو الزاوية المتأثرة مباشرة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `28px` عمليًا في درس «مقدمة في نظام التخطيط المرن Flexbox».",
+        "expectedLine": "28px",
+        "from": "22px",
+        "to": "28px",
+        "task": "غيّر القياس من `22px` إلى `28px` وراقب المساحة أو الزاوية المتأثرة مباشرة.",
+        "explanation": "تغيّر الرقم إلى `28px` يوضح حدود تأثير الخاصية على أبعاد الصندوق أو موضعه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:^|[;{\\s])(width|height|min-width|max-width|min-height|max-height|margin(?:-(?:top|right|bottom|left))?|padding(?:-(?:top|right|bottom|left))?|font-size|top|right|bottom|left|gap|row-gap|column-gap|border-width|border-radius|letter-spacing|word-spacing)\\s*:[^;}]*?\\b([1-9]\\d*(?:\\.\\d+)?)(?=\\s|;|\\n|\\}|$)",
+            "flags": "i",
+            "type": "regex",
+            "message": "القيمة الرقمية تفتقر إلى وحدة قياس صريحة (مثل px أو rem أو %). في CSS، الأرقام غير الصفرية للأبعاد تتطلب دائماً وحدة قياس."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `22px` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «مقدمة في نظام التخطيط المرن Flexbox»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: 28px",
+          "الحل الدقيق للخطوة: 28px"
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": ".row {\n  /* نسيان تفعيل display: flex */\n  gap: 20px;\n  justify-content: center;\n}",
+      "fixedCode": ".row {\n  display: flex;\n  gap: 20px;\n  justify-content: center;\n}",
+      "question": "لماذا لم تصطف عناصر .row أفقياً وتجاهل المتصفح خاصيتي gap و justify-content؟",
+      "explanation": "خواص gap و justify-content هي أدوات خاصة بنظام Flexbox و Grid؛ ولا تعمل إطلاقاً على الحاوية العادية ما لم يتم تفعيل نمط التخطيط عبر display: flex أولاً.",
+      "options": [
+        "خاصية gap لا تدعم وحدة px",
+        "يجب تحويل العناصر الأبناء إلى صور",
+        "غياب خاصية display: flex الإلزامية لتفعيل سياق التخطيط المرن على الحاوية .row",
+        "المتصفح يتطلب إضافة خاصية float: left"
+      ],
+      "correctOptionIndex": 2
+    }
+  },
+  {
+    "id": "css-80-flex-container",
+    "legacyId": "css:79",
+    "title": "خصائص الحاوية المرنة Flex Container",
+    "skill": "ترتيب باستخدام Flexbox",
+    "order": 79,
+    "concept": "توجه خصائص الحاوية المرنة كل الأبناء معًا: flex-direction تحدد الاتجاه، وjustify-content توزع المسافة أفقيًا (مثل center وspace-between)، وalign-items عموديًا.",
+    "whyUse": "بمجرد تفعيل Flexbox، كيف تتحكم في مكان العناصر داخل الصف: هل تتجمع في البداية، أم تتوسط، أم تتباعد للأطراف؟",
+    "browserMechanics": "يقيس المتصفح مجموع عروض الأبناء ثم يوزع المساحة الفائضة في الحاوية حسب قاعدة المحاذاة المطلوبة.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox",
+    "code": ".card .tiles { display: flex; justify-content: flex-start; gap: 8px; }",
+    "breakdown": [
+      "خاصية justify-content: space-between: توزع العناصر المرنة بأقصى تباعد ممكن بين الحواف.",
+      "خاصية align-items: center: تضمن استواء كافة العناصر وتوسيطها رأسياً على المحور الفرعي.",
+      "مرونة التوزيع التلقائي: تتكيف المسافات البينية ذاتياً فورياً عند تغير عرض شاشة العرض."
+    ],
+    "steps": [
+      {
+        "id": "css-80-flex-container-step-1",
+        "title": "توزيع العناصر المرنة بين الأطراف",
+        "objective": "استبدال `flex-start` بـ `space-between` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `flex-start` إلى `space-between` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `space-between` عمليًا في درس «خصائص الحاوية المرنة Flex Container».",
+        "expectedLine": "space-between",
+        "from": "flex-start",
+        "to": "space-between",
+        "task": "عدّل `flex-start` إلى `space-between` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `flex-start` إلى `space-between` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*display\\s*:\\s*(?:inline-)?(?:flex|grid))[\\s\\S]*\\b(?:justify-content|align-items|flex-direction|flex-wrap)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت خواص محاذاة مرنة (مثل justify-content أو align-items) على عنصر لا يحمل display: flex أو display: grid."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `flex-start` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «خصائص الحاوية المرنة Flex Container»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: space-between",
+          "الحل الدقيق للخطوة: space-between"
+        ]
+      },
+      {
+        "id": "css-80-flex-container-step-2",
+        "title": "اختبار محاذاة في بداية المحور المرن",
+        "objective": "استبدال `space-between` بـ `center` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "عدّل `space-between` إلى `center` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `center` عمليًا في درس «خصائص الحاوية المرنة Flex Container».",
+        "expectedLine": "center",
+        "from": "space-between",
+        "to": "center",
+        "task": "عدّل `space-between` إلى `center` ثم راقب كيف تتفاعل المعاينة مع القيمة الجديدة.",
+        "explanation": "لاحظ في المعاينة كيف انعكس الانتقال من `space-between` إلى `center` على مظهر العنصر أو تخطيطه. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*display\\s*:\\s*(?:inline-)?(?:flex|grid))[\\s\\S]*\\b(?:justify-content|align-items|flex-direction|flex-wrap)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت خواص محاذاة مرنة (مثل justify-content أو align-items) على عنصر لا يحمل display: flex أو display: grid."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `space-between` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «خصائص الحاوية المرنة Flex Container»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: center",
+          "الحل الدقيق للخطوة: center"
+        ]
+      },
+      {
+        "id": "css-80-flex-container-step-3",
+        "title": "اعتماد التوزيع النهائي لعناصر الحاوية",
+        "objective": "استبدال `center` بـ `flex-start` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "حوّل نمط العرض من `center` إلى `flex-start` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `flex-start` عمليًا في درس «خصائص الحاوية المرنة Flex Container».",
+        "expectedLine": "flex-start",
+        "from": "center",
+        "to": "flex-start",
+        "task": "حوّل نمط العرض من `center` إلى `flex-start` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "explanation": "تغيير وضع التخطيط إلى `flex-start` يبدّل خوارزمية توزيع العناصر بالكامل. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*display\\s*:\\s*(?:inline-)?(?:flex|grid))[\\s\\S]*\\b(?:justify-content|align-items|flex-direction|flex-wrap)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت خواص محاذاة مرنة (مثل justify-content أو align-items) على عنصر لا يحمل display: flex أو display: grid."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `center` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «خصائص الحاوية المرنة Flex Container»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: flex-start",
+          "الحل الدقيق للخطوة: flex-start"
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": ".navbar {\n  display: flex;\n  justify-content: middle;\n  /* النتيجة: لا يحدث أي توزيع وتعتبر القيمة باطلة */\n}",
+      "fixedCode": ".navbar {\n  display: flex;\n  justify-content: center;\n}",
+      "question": "لماذا فشل المتصفح في توسيط عناصر .navbar وسقط سطر justify-content: middle؟",
+      "explanation": "في مواصفة Flexbox الرسمية، لا توجد قيمة باسم middle لخاصية justify-content؛ القيمة المعيارية الصحيحة للتوسيط هي center.",
+      "options": [
+        "خاصية justify-content غير مدعومة في أشرطة التصفح",
+        "المتصفح يتطلب تحويل العناصر إلى أزرار أولاً",
+        "يجب استخدام text-align: center بدلاً من justify-content",
+        "القيمة middle غير صالحة لخاصية justify-content والصواب استخدام center لتوسيط العناصر المرنة"
+      ],
+      "correctOptionIndex": 3
+    }
+  },
+  {
+    "id": "css-81-flex-items",
+    "legacyId": "css:80",
+    "title": "خصائص العناصر الفرعية المرنة Flex Items",
+    "skill": "ترتيب باستخدام Flexbox",
+    "order": 80,
+    "concept": "تُطبق flex-grow وflex-shrink وflex-basis على العنصر الابن نفسه؛ فكلما زاد رقم flex-grow أخذ العنصر حصة أكبر من المساحة الفائضة.",
+    "whyUse": "في شريط علوي فيه شعار وحقل بحث وزر، نريد لحقل البحث وحده أن يتمدد ليملأ الفراغ المتبقي بينما يبقى الزر والشعار بحجمهما! كيف نمنح عنصرًا واحدًا مرونة أكبر؟",
+    "browserMechanics": "يجمع المتصفح أرقام flex-grow لجميع الأبناء، ثم يقسّم المساحة المتبقية حسب نسبة كل ابن إلى المجموع.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items",
+    "code": ".card .tiles span:first-child { flex-grow: 1; }",
+    "breakdown": [
+      "خاصية flex-grow: تحدد معامل التمدد النسبي للعنصر لامتصاص المساحة الشاغرة.",
+      "خاصية flex-shrink: تحمي العناصر الهامة من الانكماش المفرط عند تعيينها لـ 0.",
+      "الخاصية المختصرة flex: 1: تجعل العناصر تتشارك المساحة بالتساوي وتتمدد بمرونة تامة."
+    ],
+    "steps": [
+      {
+        "id": "css-81-flex-items-step-1",
+        "title": "مضاعفة معامل تمدد العنصر المرن",
+        "objective": "استبدال `flex-grow: 1` بـ `flex-grow: 2` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "حوّل نمط العرض من `flex-grow: 1` إلى `flex-grow: 2` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `flex-grow: 2` عمليًا في درس «خصائص العناصر الفرعية المرنة Flex Items».",
+        "expectedLine": "flex-grow: 2",
+        "from": "flex-grow: 1",
+        "to": "flex-grow: 2",
+        "task": "حوّل نمط العرض من `flex-grow: 1` إلى `flex-grow: 2` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "explanation": "تغيير وضع التخطيط إلى `flex-grow: 2` يبدّل خوارزمية توزيع العناصر بالكامل. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:^|[;{\\s])(width|height|min-width|max-width|min-height|max-height|margin(?:-(?:top|right|bottom|left))?|padding(?:-(?:top|right|bottom|left))?|font-size|top|right|bottom|left|gap|row-gap|column-gap|border-width|border-radius|letter-spacing|word-spacing)\\s*:[^;}]*?\\b([1-9]\\d*(?:\\.\\d+)?)(?=\\s|;|\\n|\\}|$)",
+            "flags": "i",
+            "type": "regex",
+            "message": "القيمة الرقمية تفتقر إلى وحدة قياس صريحة (مثل px أو rem أو %). في CSS، الأرقام غير الصفرية للأبعاد تتطلب دائماً وحدة قياس."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `flex-grow: 1` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «خصائص العناصر الفرعية المرنة Flex Items»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: flex-grow: 2",
+          "الحل الدقيق للخطوة: flex-grow: 2"
+        ]
+      },
+      {
+        "id": "css-81-flex-items-step-2",
+        "title": "اختبار معامل تمدد متكافئ بديل",
+        "objective": "استبدال `flex-grow: 2` بـ `flex-grow: 3` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "حوّل نمط العرض من `flex-grow: 2` إلى `flex-grow: 3` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `flex-grow: 3` عمليًا في درس «خصائص العناصر الفرعية المرنة Flex Items».",
+        "expectedLine": "flex-grow: 3",
+        "from": "flex-grow: 2",
+        "to": "flex-grow: 3",
+        "task": "حوّل نمط العرض من `flex-grow: 2` إلى `flex-grow: 3` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "explanation": "تغيير وضع التخطيط إلى `flex-grow: 3` يبدّل خوارزمية توزيع العناصر بالكامل. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:^|[;{\\s])(width|height|min-width|max-width|min-height|max-height|margin(?:-(?:top|right|bottom|left))?|padding(?:-(?:top|right|bottom|left))?|font-size|top|right|bottom|left|gap|row-gap|column-gap|border-width|border-radius|letter-spacing|word-spacing)\\s*:[^;}]*?\\b([1-9]\\d*(?:\\.\\d+)?)(?=\\s|;|\\n|\\}|$)",
+            "flags": "i",
+            "type": "regex",
+            "message": "القيمة الرقمية تفتقر إلى وحدة قياس صريحة (مثل px أو rem أو %). في CSS، الأرقام غير الصفرية للأبعاد تتطلب دائماً وحدة قياس."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `flex-grow: 2` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «خصائص العناصر الفرعية المرنة Flex Items»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: flex-grow: 3",
+          "الحل الدقيق للخطوة: flex-grow: 3"
+        ]
+      },
+      {
+        "id": "css-81-flex-items-step-3",
+        "title": "اعتماد معامل التمدد النهائي للمكون",
+        "objective": "استبدال `flex-grow: 3` بـ `flex-grow: 0` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "حوّل نمط العرض من `flex-grow: 3` إلى `flex-grow: 0` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `flex-grow: 0` عمليًا في درس «خصائص العناصر الفرعية المرنة Flex Items».",
+        "expectedLine": "flex-grow: 0",
+        "from": "flex-grow: 3",
+        "to": "flex-grow: 0",
+        "task": "حوّل نمط العرض من `flex-grow: 3` إلى `flex-grow: 0` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "explanation": "تغيير وضع التخطيط إلى `flex-grow: 0` يبدّل خوارزمية توزيع العناصر بالكامل. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "(?:^|[;{\\s])(width|height|min-width|max-width|min-height|max-height|margin(?:-(?:top|right|bottom|left))?|padding(?:-(?:top|right|bottom|left))?|font-size|top|right|bottom|left|gap|row-gap|column-gap|border-width|border-radius|letter-spacing|word-spacing)\\s*:[^;}]*?\\b([1-9]\\d*(?:\\.\\d+)?)(?=\\s|;|\\n|\\}|$)",
+            "flags": "i",
+            "type": "regex",
+            "message": "القيمة الرقمية تفتقر إلى وحدة قياس صريحة (مثل px أو rem أو %). في CSS، الأرقام غير الصفرية للأبعاد تتطلب دائماً وحدة قياس."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `flex-grow: 3` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «خصائص العناصر الفرعية المرنة Flex Items»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: flex-grow: 0",
+          "الحل الدقيق للخطوة: flex-grow: 0"
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": ".search-bar {\n  /* حقل بحث داخل حاوية flex */\n  flex-grow: 1px;\n}",
+      "fixedCode": ".search-bar {\n  flex-grow: 1;\n}",
+      "question": "لماذا أسقط المتصفح سطر flex-grow وظل حقل البحث منكمشاً ولم يتمدد؟",
+      "explanation": "خاصية flex-grow هي معامل نسبي رقمي مجرد (بدون أي وحدة قياس)؛ ووضع وحدة مثل px يعتبر خطأ نحوياً يسقط الخاصية فوراً؛ والصواب flex-grow: 1.",
+      "options": [
+        "خاصية flex-grow تقبل أرقاماً نسبية مجردة فقط (مثل 1) وكتابة وحدة مثل 1px خطأ نحوي يسقط الإعلان",
+        "حقول البحث لا تقبل خاصية flex-grow",
+        "يجب استخدام خاصية width: 100% بدلاً من flex-grow",
+        "المتصفح يتطلب إضافة !important لمعاملات التمدد"
+      ],
+      "correctOptionIndex": 0
+    }
+  },
+  {
+    "id": "css-82-flex-responsive",
+    "legacyId": "css:81",
+    "title": "التجاوب وتعدد أسطر Flexbox",
+    "skill": "ترتيب باستخدام Flexbox",
+    "order": 81,
+    "concept": "تسمح flex-wrap: wrap للعناصر بالنزول لسطر جديد عندما يضيق العرض عن مجموع عروضها (أو عكس الترتيب مع wrap-reverse).",
+    "whyUse": "في الوضع الافتراضي nowrap، إذا ضاقت الشاشة يضغط Flexbox البطاقات أو يدفعها خارج الشاشة بدل أن ينقلها لسطر جديد! كيف تسمح لها بالالتفاف بذكاء؟",
+    "browserMechanics": "يحسب المتصفح السعة الأفقية لكل سطر، ومتى تجاوز العنصر التالي الحافة يفتح له سطرًا مرنًا جديدًا أسفله.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap",
+    "code": ".card .tiles { display: flex; flex-wrap: nowrap; gap: 8px; }\n.card .tiles span { min-width: 110px; }",
+    "breakdown": [
+      "خاصية flex-wrap: wrap: تتيح للعناصر المرنة الالتفاف في أسطر جديدة عند ضيق المساحة.",
+      "تجنب الانضغاط: تحمي العناصر من الانكماش القسري المشوه للمحتوى والنصوص.",
+      "خاصية align-content: تتحكم في توزيع المسافات الفاصلة بين الأسطر المرنة المتعددة."
+    ],
+    "steps": [
+      {
+        "id": "css-82-flex-responsive-step-1",
+        "title": "تفعيل تعدد الأسطر للحاوية المرنة",
+        "objective": "استبدال `flex-wrap: nowrap` بـ `flex-wrap: wrap` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "حوّل نمط العرض من `flex-wrap: nowrap` إلى `flex-wrap: wrap` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `flex-wrap: wrap` عمليًا في درس «التجاوب وتعدد أسطر Flexbox».",
+        "expectedLine": "flex-wrap: wrap",
+        "from": "flex-wrap: nowrap",
+        "to": "flex-wrap: wrap",
+        "task": "حوّل نمط العرض من `flex-wrap: nowrap` إلى `flex-wrap: wrap` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "explanation": "تغيير وضع التخطيط إلى `flex-wrap: wrap` يبدّل خوارزمية توزيع العناصر بالكامل. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*display\\s*:\\s*(?:inline-)?(?:flex|grid))[\\s\\S]*\\b(?:justify-content|align-items|flex-direction|flex-wrap)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت خواص محاذاة مرنة (مثل justify-content أو align-items) على عنصر لا يحمل display: flex أو display: grid."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `flex-wrap: nowrap` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «التجاوب وتعدد أسطر Flexbox»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: flex-wrap: wrap",
+          "الحل الدقيق للخطوة: flex-wrap: wrap"
+        ]
+      },
+      {
+        "id": "css-82-flex-responsive-step-2",
+        "title": "اختبار نمط السطر المفرد الإجباري",
+        "objective": "استبدال `flex-wrap: wrap` بـ `flex-wrap: wrap-reverse` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "حوّل نمط العرض من `flex-wrap: wrap` إلى `flex-wrap: wrap-reverse` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `flex-wrap: wrap-reverse` عمليًا في درس «التجاوب وتعدد أسطر Flexbox».",
+        "expectedLine": "flex-wrap: wrap-reverse",
+        "from": "flex-wrap: wrap",
+        "to": "flex-wrap: wrap-reverse",
+        "task": "حوّل نمط العرض من `flex-wrap: wrap` إلى `flex-wrap: wrap-reverse` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "explanation": "تغيير وضع التخطيط إلى `flex-wrap: wrap-reverse` يبدّل خوارزمية توزيع العناصر بالكامل. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*display\\s*:\\s*(?:inline-)?(?:flex|grid))[\\s\\S]*\\b(?:justify-content|align-items|flex-direction|flex-wrap)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت خواص محاذاة مرنة (مثل justify-content أو align-items) على عنصر لا يحمل display: flex أو display: grid."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `flex-wrap: wrap` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «التجاوب وتعدد أسطر Flexbox»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: flex-wrap: wrap-reverse",
+          "الحل الدقيق للخطوة: flex-wrap: wrap-reverse"
+        ]
+      },
+      {
+        "id": "css-82-flex-responsive-step-3",
+        "title": "اعتماد نمط الالتفاف النهائي للشبكة",
+        "objective": "استبدال `flex-wrap: wrap-reverse` بـ `flex-wrap: nowrap` ومراقبة أثره المباشر في المعاينة",
+        "type": "edit",
+        "instruction": "حوّل نمط العرض من `flex-wrap: wrap-reverse` إلى `flex-wrap: nowrap` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "benefit": "فائدة ما جرّبته: شاهدت أثر `flex-wrap: nowrap` عمليًا في درس «التجاوب وتعدد أسطر Flexbox».",
+        "expectedLine": "flex-wrap: nowrap",
+        "from": "flex-wrap: wrap-reverse",
+        "to": "flex-wrap: nowrap",
+        "task": "حوّل نمط العرض من `flex-wrap: wrap-reverse` إلى `flex-wrap: nowrap` وراقب إعادة ترتيب العناصر داخل البطاقة.",
+        "explanation": "تغيير وضع التخطيط إلى `flex-wrap: nowrap` يبدّل خوارزمية توزيع العناصر بالكامل. ركّز على هذا الجزء وحده لترى الفرق بوضوح.",
+        "errorRules": [
+          {
+            "pattern": "(?:^|\\{|\\n)\\s*([a-z-]+)\\s*:\\s*([^;{}\\n\\r]+?)\\s*\\n\\s*([a-z-]+)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "نسيت وضع الفاصلة المنقوطة ';' في نهاية سطر الخاصية. بدونها يدمج المتصفح السطرين معاً ويتجاهل التنسيق."
+          },
+          {
+            "pattern": "^(?![\\s\\S]*display\\s*:\\s*(?:inline-)?(?:flex|grid))[\\s\\S]*\\b(?:justify-content|align-items|flex-direction|flex-wrap)\\s*:",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت خواص محاذاة مرنة (مثل justify-content أو align-items) على عنصر لا يحمل display: flex أو display: grid."
+          }
+        ],
+        "hints": [
+          "دقّق في الموضع الذي يحمل `flex-wrap: wrap-reverse` — تغييره وحده كافٍ لتلاحظ الفارق في البطاقة.",
+          "لماذا يغيّر هذا التعديل نتيجة درس «التجاوب وتعدد أسطر Flexbox»؟ لأن محرك CSS يبني التخطيط واللون من هذه القيمة تحديدًا؛ هل كتبت `القيمة البديلة` بالصياغة السليمة والفاصلة المنقوطة؟",
+          "في السطر المستهدف، بدّل القيمة لتظهر الصيغة: flex-wrap: nowrap",
+          "الحل الدقيق للخطوة: flex-wrap: nowrap"
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": ".card-grid {\n  display: flex;\n  /* نسيان flex-wrap */\n  /* النتيجة: البطاقات تنضغط وتخرج عن شاشة الهاتف بالعرض */\n}",
+      "fixedCode": ".card-grid {\n  display: flex;\n  flex-wrap: wrap;\n}",
+      "question": "لماذا انضغطت البطاقات في .card-grid وخرجت عن شاشة الهاتف في سطر واحد دون أن تلتف؟",
+      "explanation": "القيمة الافتراضية للحاويات المرنة هي flex-wrap: nowrap؛ وبدون إضافة flex-wrap: wrap صراحة يرفض المتصفح إنشاء أسطر جديدة ويجبر العناصر على البقاء في سطر واحد مهما ضاقت الشاشة.",
+      "options": [
+        "عناصر Flexbox لا تعمل على شاشات الهواتف",
+        "القيمة الافتراضية هي nowrap التي تجبر العناصر على سطر واحد، والحل تفعيل flex-wrap: wrap للسماح بالالتفاف",
+        "يجب استخدام خاصية overflow: hidden فقط",
+        "المتصفح يتطلب تحديد ارتفاع ثابت للحاوية"
+      ],
+      "correctOptionIndex": 1
+    }
+  }
+]

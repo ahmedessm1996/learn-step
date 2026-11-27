@@ -1,0 +1,794 @@
+[
+  {
+    "id": "html-42-forms",
+    "legacyId": "html:41",
+    "title": "نماذج الويب واستقبال مدخلات المستخدم",
+    "skill": "نموذج يجمع البيانات",
+    "order": 41,
+    "concept": "يجمع عنصر <form> حقول الإدخال؛ يربط <label for=\"id\"> التسمية بالحقل لزيادة مساحة النقر وإتاحة الوصول، بينما تحدد سمة name اسم الحقل عند الإرسال.",
+    "whyUse": "حتى لو صممت أجمل مربع إدخال، إذا ضغط المستخدم «إرسال» ولم يحمل الحقل خاصية name، فلن يصل أي شيء للخادم! ما الذي يربط التسمية بالحقل وبالبيانات المرسلة؟",
+    "browserMechanics": "عند إرسال النموذج، يجمع المتصفح كل حقل يمتلك سمة name ويرسلها كأزواج name=value؛ والضغط على <label> ينقل مؤشر الكتابة تلقائيًا إلى الـ input المرتبط بنفس الـ id.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms",
+    "code": "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>نموذج تواصل</title>\n</head>\n<body>\n  <h1>أرسل اقتراحًا</h1>\n  <form action=\"#\" method=\"get\">\n    <label for=\"idea\">فكرتك:</label>\n    <input id=\"idea\" name=\"idea\" type=\"text\">\n    <button type=\"submit\">إرسال</button>\n  </form>\n</body>\n</html>",
+    "breakdown": [
+      "<form>: حاوية تجمع خانات الإدخال وزر الإرسال في نموذج واحد.",
+      "<label>: نص يعرّف الخانة ويرتبط بها بواسطة for وid.",
+      "name=\"idea\": اسم الحقل الذي يرافق قيمته عند إرسال النموذج.",
+      "type=\"submit\": يجعل الزر يطلب إرسال النموذج الذي يحتويه."
+    ],
+    "steps": [
+      {
+        "id": "html-42-forms-step-1",
+        "title": "سمِّ المهمة",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `أرسل اقتراحًا` إلى `شارك فكرة للموقع` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تقديم تسمية دلالية مقروءة بوضوح تربط القارئ بالحقل المطلوب.",
+        "expectedLine": "شارك فكرة للموقع",
+        "from": "أرسل اقتراحًا",
+        "to": "شارك فكرة للموقع",
+        "task": "بدّل `أرسل اقتراحًا` إلى `شارك فكرة للموقع` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `أرسل اقتراحًا` بـ `شارك فكرة للموقع` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(?!(?:br|hr|img|input|meta|link)\\b)([a-z1-6]+)\\b[^>]*>[^<]+<\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "كتبت وسم البداية مجدداً بدلاً من وسم الإغلاق. وسم الإغلاق يتطلب شرطة مائلة مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `أرسل اقتراحًا` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «نماذج الويب واستقبال مدخلات المستخدم»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nشارك فكرة للموقع",
+          "الحل النموذجي لهذه الخطوة:\nشارك فكرة للموقع"
+        ]
+      },
+      {
+        "id": "html-42-forms-step-2",
+        "title": "أضف خانة ثانية",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `<button type=\"submit\">إرسال</button>` إلى `<label for=\"name\">اسمك:</label>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تزويد النموذج بحقل إضافي يرسل بياناته للخادم بمفتاح مستقل.",
+        "expectedLine": "    <label for=\"name\">اسمك:</label>\n    <input id=\"name\" name=\"name\" type=\"text\">\n    <button type=\"submit\">إرسال</button>",
+        "from": "    <button type=\"submit\">إرسال</button>",
+        "to": "    <label for=\"name\">اسمك:</label>\n    <input id=\"name\" name=\"name\" type=\"text\">\n    <button type=\"submit\">إرسال</button>",
+        "task": "بدّل `<button type=\"submit\">إرسال</button>` إلى `<label for=\"name\">اسمك:</label>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `<button type=\"submit\">إرسال</button>` بـ `<label for=\"name\">اسمك:</label>     <input id=\"name\" name=\"name\" type=\"text\">     <button type=\"submit\">إرسال</button>` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `<button type=\"submit\">إرسال</button>` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «نماذج الويب واستقبال مدخلات المستخدم»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\n<label for=\"name\">اسمك:</label>\n    <input id=\"name\" name=\"name\" type=\"text\">\n    <button type=\"submit\">إرسال</button>",
+          "الحل النموذجي لهذه الخطوة:\n<label for=\"name\">اسمك:</label>\n    <input id=\"name\" name=\"name\" type=\"text\">\n    <button type=\"submit\">إرسال</button>"
+        ]
+      },
+      {
+        "id": "html-42-forms-step-3",
+        "title": "اربط النص بالخانة",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `<label for=\"idea\">فكرتك:</label>` إلى `<label for=\"suggestion\">فكرتك:</label>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تفعيل ميزة التركيز التلقائي على الحقل بمجرد النقر على نص التسمية.",
+        "expectedLine": "<label for=\"suggestion\">فكرتك:</label>\n    <input id=\"suggestion\"",
+        "from": "<label for=\"idea\">فكرتك:</label>\n    <input id=\"idea\"",
+        "to": "<label for=\"suggestion\">فكرتك:</label>\n    <input id=\"suggestion\"",
+        "task": "بدّل `<label for=\"idea\">فكرتك:</label>` إلى `<label for=\"suggestion\">فكرتك:</label>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `<label for=\"idea\">فكرتك:</label>     <input id=\"idea\"` بـ `<label for=\"suggestion\">فكرتك:</label>     <input id=\"suggestion\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(?!(?:br|hr|img|input|meta|link)\\b)([a-z1-6]+)\\b[^>]*>[^<]+<\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "كتبت وسم البداية مجدداً بدلاً من وسم الإغلاق. وسم الإغلاق يتطلب شرطة مائلة مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `<label for=\"idea\">فكرتك:</label>` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «نماذج الويب واستقبال مدخلات المستخدم»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\n<label for=\"suggestion\">فكرتك:</label>\n    <input id=\"suggestion\"",
+          "الحل النموذجي لهذه الخطوة:\n<label for=\"suggestion\">فكرتك:</label>\n    <input id=\"suggestion\""
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "<form action=\"/submit\">\n  <input type=\"text\" value=\"أحمد\">\n  <button type=\"submit\">إرسال</button>\n</form>",
+      "fixedCode": "<form action=\"/submit\">\n  <input type=\"text\" name=\"username\" value=\"أحمد\">\n  <button type=\"submit\">إرسال</button>\n</form>",
+      "question": "لماذا لم تصل قيمة الحقل إلى الخادم عند إرسال النموذج في الكود المعروض؟",
+      "explanation": "الحقل يفتقر إلى السمة الإلزامية name. المتصفح يتجاهل تماماً أي حقل إدخال لا يمتلك خاصية name أثناء تجميع بيانات النموذج للإرسال.",
+      "options": [
+        "النوع text غير مدعوم في نماذج HTML5",
+        "غياب خاصية name الإلزامية لحقل الإدخال ليتم إرساله مع النموذج",
+        "يجب إغلاق حقل الإدخال بـ </input>",
+        "لا يمكن إرسال بيانات النماذج دون جافاسكربت"
+      ],
+      "correctOptionIndex": 1
+    }
+  },
+  {
+    "id": "html-43-form-attributes",
+    "legacyId": "html:42",
+    "title": "خصائص النموذج وإعدادات وجهة الإرسال",
+    "skill": "نموذج يجمع البيانات",
+    "order": 42,
+    "concept": "تحدد action عنوان الوجهة، وتحدد method طريقة الإرسال: get تضع البيانات في الرابط (للبحث)، وpost ترسلها داخل جسم الطلب (للبيانات الحساسة والكبيرة)، بينما تضبط autocomplete الإكمال التلقائي.",
+    "whyUse": "أين تذهب البيانات بعد الضغط على زر الإرسال؟ ولماذا تظهر حقول البحث في رابط المتصفح بينما لا يجوز أبدًا أن يظهر فيه رقم بطاقة أو كلمة مرور؟",
+    "browserMechanics": "في method=\"get\" يلحق المتصفح البيانات بعد علامة ? في الـ URL فتُحفظ في سجل التصفح، أما method=\"post\" فينشئ طلب HTTP يضع البيانات في جسم الرسالة.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form",
+    "code": "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>إعداد النموذج</title>\n</head>\n<body>\n  <h1>طلب درس جديد</h1>\n  <form action=\"/suggestions\" method=\"get\" autocomplete=\"on\">\n    <label for=\"topic\">موضوع تقترحه:</label>\n    <input id=\"topic\" name=\"topic\" type=\"text\">\n    <button type=\"submit\">إرسال الاقتراح</button>\n  </form>\n</body>\n</html>",
+    "breakdown": [
+      "action: عنوان المورد الذي يستقبل البيانات بعد الإرسال.",
+      "method=\"get\": يرسل القيم ضمن عنوان الطلب؛ مناسب لتجربة بيانات بحث عامة.",
+      "autocomplete: يسمح للمتصفح باقتراح قيم سبق إدخالها.",
+      "name: من دون name لا تحمل الخانة اسمًا واضحًا ضمن بيانات النموذج."
+    ],
+    "steps": [
+      {
+        "id": "html-43-form-attributes-step-1",
+        "title": "غيّر مكان الإرسال",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `/suggestions` إلى `/ideas` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: توجيه بيانات الاستمارة إلى المسار البرمجي المخصص على الخادم.",
+        "expectedLine": "/ideas",
+        "from": "/suggestions",
+        "to": "/ideas",
+        "task": "بدّل `/suggestions` إلى `/ideas` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `/suggestions` بـ `/ideas` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          },
+          {
+            "pattern": "\\b(?:href|src)\\s*=\\s*https?:\\/\\/[^\"'\\s>]+",
+            "flags": "i",
+            "type": "regex",
+            "message": "قيمة الرابط أو المسار غير محاطة بعلامات اقتباس \"...\". احرص دائماً على وضع الرابط داخل علامتي اقتباس."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `/suggestions` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص النموذج وإعدادات وجهة الإرسال»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\n/ideas",
+          "الحل النموذجي لهذه الخطوة:\n/ideas"
+        ]
+      },
+      {
+        "id": "html-43-form-attributes-step-2",
+        "title": "أوقف الإكمال المقترح",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `autocomplete=\"on\"` إلى `autocomplete=\"off\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: حماية الخصوصية في الاستمارات الحساسة بمنع المتصفح من اقتراح بيانات سابقة.",
+        "expectedLine": "autocomplete=\"off\"",
+        "from": "autocomplete=\"on\"",
+        "to": "autocomplete=\"off\"",
+        "task": "بدّل `autocomplete=\"on\"` إلى `autocomplete=\"off\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `autocomplete=\"on\"` بـ `autocomplete=\"off\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          },
+          {
+            "pattern": "<(?!(?:br|hr|img|input|meta|link)\\b)([a-z1-6]+)\\b[^>]*>[^<]+<\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "كتبت وسم البداية مجدداً بدلاً من وسم الإغلاق. وسم الإغلاق يتطلب شرطة مائلة مثل </$1>."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `autocomplete=\"on\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص النموذج وإعدادات وجهة الإرسال»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nautocomplete=\"off\"",
+          "الحل النموذجي لهذه الخطوة:\nautocomplete=\"off\""
+        ]
+      },
+      {
+        "id": "html-43-form-attributes-step-3",
+        "title": "قارن طريقة الإرسال",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `method=\"get\"` إلى `method=\"post\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تأمين البيانات وإرسالها في متن الطلب بدلاً من كشفها في شريط عنوان المتصفح.",
+        "expectedLine": "method=\"post\"",
+        "from": "method=\"get\"",
+        "to": "method=\"post\"",
+        "task": "بدّل `method=\"get\"` إلى `method=\"post\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `method=\"get\"` بـ `method=\"post\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          },
+          {
+            "pattern": "<(?!(?:br|hr|img|input|meta|link)\\b)([a-z1-6]+)\\b[^>]*>[^<]+<\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "كتبت وسم البداية مجدداً بدلاً من وسم الإغلاق. وسم الإغلاق يتطلب شرطة مائلة مثل </$1>."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `method=\"get\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص النموذج وإعدادات وجهة الإرسال»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nmethod=\"post\"",
+          "الحل النموذجي لهذه الخطوة:\nmethod=\"post\""
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "<form action=\"/login\" method=\"get\">\n  <input type=\"password\" name=\"pass\">\n  <button type=\"submit\">دخول</button>\n</form>",
+      "fixedCode": "<form action=\"/login\" method=\"post\">\n  <input type=\"password\" name=\"pass\">\n  <button type=\"submit\">دخول</button>\n</form>",
+      "question": "ما هي الثغرة الأمنية الفادحة في استخدام method=\"get\" مع حقول كلمات المرور؟",
+      "explanation": "طريقة GET تعرض كافة بيانات الحقول في شريط العنوان وسجلات الخادم والتصفح بصيغة نصية مكشوفة. إرسال كلمات المرور والبيانات الحساسة يتطلب إلزامياً استخدام method=\"post\".",
+      "options": [
+        "يجب تغيير اسم الحقل pass إلى secret",
+        "حقل password لا يعمل مع نماذج GET",
+        "طريقة GET تكشف كلمة المرور في شريط العنوان وسجلات المتصفح ويجب استبدالها بـ post",
+        "النموذج يتطلب خاصية id إجبارياً"
+      ],
+      "correctOptionIndex": 2
+    }
+  },
+  {
+    "id": "html-44-form-elements",
+    "legacyId": "html:43",
+    "title": "عناصر النموذج وأدوات التحكم التفاعلية",
+    "skill": "نموذج يجمع البيانات",
+    "order": 43,
+    "concept": "تضم عناصر النماذج <select> مع <option> للقوائم المنسدلة، و<textarea> للنصوص الطويلة بعدد أسطر محدد بـ rows، و<fieldset> مع <legend> لتجميع الحقول المرتبطة بعنوان واضح.",
+    "whyUse": "ليس كل إدخال مجرد سطر نص واحد: أحيانًا يحتاج الزائر الاختيار من قائمة منسدلة، أو كتابة رسالة من عدة أسطر، أو تنظيم الحقول في مجموعات واضحة.",
+    "browserMechanics": "تعالج <select> خيار <option> المحدد كقيمة الإرسال، بينما يمرر <fieldset> حالة disabled لكافة الحقول بداخله دفعة واحدة إن أُضيفت إليه.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/The_native_form_widgets",
+    "code": "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>اختيار مسار التعلم</title>\n</head>\n<body>\n  <h1>ما الذي تتعلمه الآن؟</h1>\n  <form action=\"#\">\n    <fieldset>\n      <legend>اختيارك</legend>\n      <label for=\"track\">المسار:</label>\n      <select id=\"track\" name=\"track\">\n        <option>HTML</option>\n        <option>CSS</option>\n      </select>\n      <label for=\"note\">ملاحظة:</label>\n      <textarea id=\"note\" name=\"note\" rows=\"3\"></textarea>\n    </fieldset>\n  </form>\n</body>\n</html>",
+    "breakdown": [
+      "fieldset: يجمع الحقول المرتبطة بصريًا ودلاليًا.",
+      "legend: عنوان المجموعة التي يحيط بها fieldset.",
+      "select وoption: قائمة اختيار واحدة تحتوي بدائلها.",
+      "textarea: خانة كتابة متعددة الأسطر؛ rows يحدد ارتفاعًا ابتدائيًا."
+    ],
+    "steps": [
+      {
+        "id": "html-44-form-elements-step-1",
+        "title": "أضف خيار JavaScript",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `<option>CSS</option>` إلى `<option>CSS</option>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تزويد القائمة المنسدلة بخيار جديد يحمل قيمة تقنية واضحة للخادم.",
+        "expectedLine": "        <option>CSS</option>\n        <option>JavaScript</option>",
+        "from": "        <option>CSS</option>",
+        "to": "        <option>CSS</option>\n        <option>JavaScript</option>",
+        "task": "بدّل `<option>CSS</option>` إلى `<option>CSS</option>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `<option>CSS</option>` بـ `<option>CSS</option>         <option>JavaScript</option>` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(?!(?:br|hr|img|input|meta|link)\\b)([a-z1-6]+)\\b[^>]*>[^<]+<\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "كتبت وسم البداية مجدداً بدلاً من وسم الإغلاق. وسم الإغلاق يتطلب شرطة مائلة مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `<option>CSS</option>` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «عناصر النموذج وأدوات التحكم التفاعلية»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\n<option>CSS</option>\n        <option>JavaScript</option>",
+          "الحل النموذجي لهذه الخطوة:\n<option>CSS</option>\n        <option>JavaScript</option>"
+        ]
+      },
+      {
+        "id": "html-44-form-elements-step-2",
+        "title": "اجعل للمجموعة عنوانًا واضحًا",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `<legend>اختيارك</legend>` إلى `<legend>اختيار مسار البرمجة</legend>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: توفير عنوان إرشادي يحيط بمجموعة الحقول ويرشد قارئات الشاشة.",
+        "expectedLine": "<legend>اختيار مسار البرمجة</legend>",
+        "from": "<legend>اختيارك</legend>",
+        "to": "<legend>اختيار مسار البرمجة</legend>",
+        "task": "بدّل `<legend>اختيارك</legend>` إلى `<legend>اختيار مسار البرمجة</legend>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `<legend>اختيارك</legend>` بـ `<legend>اختيار مسار البرمجة</legend>` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(?!(?:br|hr|img|input|meta|link)\\b)([a-z1-6]+)\\b[^>]*>[^<]+<\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "كتبت وسم البداية مجدداً بدلاً من وسم الإغلاق. وسم الإغلاق يتطلب شرطة مائلة مثل </$1>."
+          },
+          {
+            "pattern": "<(p|div|h[1-6]|ul|ol|li|table|span|a)\\b[^>]*\\/>",
+            "flags": "i",
+            "type": "regex",
+            "message": "العناصر الحاوية مثل <$1> لا تُغلق ذاتياً بـ />، بل تحتاج إلى وسم إغلاق منفصل </$1>."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `<legend>اختيارك</legend>` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «عناصر النموذج وأدوات التحكم التفاعلية»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\n<legend>اختيار مسار البرمجة</legend>",
+          "الحل النموذجي لهذه الخطوة:\n<legend>اختيار مسار البرمجة</legend>"
+        ]
+      },
+      {
+        "id": "html-44-form-elements-step-3",
+        "title": "وسّع مساحة الملاحظة",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `rows=\"3\"` إلى `rows=\"5\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: توفير مساحة كتابة واسعة ومريحة لتدوين الملاحظات والرسائل الطويلة.",
+        "expectedLine": "rows=\"5\"",
+        "from": "rows=\"3\"",
+        "to": "rows=\"5\"",
+        "task": "بدّل `rows=\"3\"` إلى `rows=\"5\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `rows=\"3\"` بـ `rows=\"5\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(?!(?:br|hr|img|input|meta|link)\\b)([a-z1-6]+)\\b[^>]*>[^<]+<\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "كتبت وسم البداية مجدداً بدلاً من وسم الإغلاق. وسم الإغلاق يتطلب شرطة مائلة مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `rows=\"3\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «عناصر النموذج وأدوات التحكم التفاعلية»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nrows=\"5\"",
+          "الحل النموذجي لهذه الخطوة:\nrows=\"5\""
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "<select name=\"city\">\n  <li>الرياض</li>\n  <li>القاهرة</li>\n</select>",
+      "fixedCode": "<select name=\"city\">\n  <option value=\"riyadh\">الرياض</option>\n  <option value=\"cairo\">القاهرة</option>\n</select>",
+      "question": "ما هو الوسم المعياري الصحيح للخيارات داخل القائمة المنسدلة <select>؟",
+      "explanation": "الوسم <select> يقبل حصراً وسوم الخيارات <option> كأبناء مباشرين (أو مجمعة داخل <optgroup>). وضع عناصر قائمة <li> داخل <select> خطأ بنيوي فادح يتجاهله المتصفح.",
+      "options": [
+        "يجب استخدام وسم <input> داخل القائمة",
+        "الوسم <select> يتطلب وسم إغلاق </options>",
+        "لا يمكن إعطاء القائمة المنسدلة خاصية name",
+        "الخيارات داخل <select> يجب أن تكون وسوم <option> وليس <li>"
+      ],
+      "correctOptionIndex": 3
+    }
+  },
+  {
+    "id": "html-45-input-types",
+    "legacyId": "html:44",
+    "title": "أنواع حقول الإدخال input types المختلفة",
+    "skill": "نموذج يجمع البيانات",
+    "order": 44,
+    "concept": "يحدد type شكل الحقل وسلوكه: text للنص، email للتحقق من صيغة البريد، number للأرقام مع حدود min وmax، وcheckbox لعدة خيارات معًا، وradio لاختيار واحد فقط ضمن نفس الـ name.",
+    "whyUse": "تغيير كلمة واحدة في type داخل <input> يبدّل واجهة الهاتف من لوحة أحرف إلى لوحة أرقام، أو من مربع اختيار متعدد إلى دائرة اختيار وحيد! ما أنواع الإدخال المتاحة؟",
+    "browserMechanics": "تكيّف المتصفحات والهواتف لوحة المفاتيح الافتراضية والتحقق التلقائي وفق type، وتربط أزرار radio التي تتشارك نفس name في مجموعة حصرية واحدة.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input",
+    "code": "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>أنواع خانات الإدخال</title>\n</head>\n<body>\n  <h1>بيانات تجربة الدرس</h1>\n  <form action=\"#\">\n    <label for=\"email\">البريد:</label>\n    <input id=\"email\" name=\"email\" type=\"email\">\n    <label for=\"date\">موعد التجربة:</label>\n    <input id=\"date\" name=\"date\" type=\"date\">\n    <label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>\n  </form>\n</body>\n</html>",
+    "breakdown": [
+      "type=\"email\": يخصص الخانة لإدخال عنوان بريد ويتيح للمتصفح التحقق من شكله الأساسي.",
+      "type=\"date\": يعرض أداة لاختيار تاريخ بدل كتابة نص عادي في بعض المتصفحات.",
+      "type=\"checkbox\": اختيار مستقل يمكن تشغيله أو تركه مغلقًا.",
+      "name: يحدد المفتاح الذي يحمل قيمة الإدخال عند إرسال النموذج."
+    ],
+    "steps": [
+      {
+        "id": "html-45-input-types-step-1",
+        "title": "حوّل البريد إلى نص",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `type=\"email\"` إلى `type=\"text\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تفعيل لوحة مفاتيح البريد على الهواتف والتحقق التلقائي من وجود علامة @.",
+        "expectedLine": "type=\"text\"",
+        "from": "type=\"email\"",
+        "to": "type=\"text\"",
+        "task": "بدّل `type=\"email\"` إلى `type=\"text\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `type=\"email\"` بـ `type=\"text\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `type=\"email\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «أنواع حقول الإدخال input types المختلفة»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\ntype=\"text\"",
+          "الحل النموذجي لهذه الخطوة:\ntype=\"text\""
+        ]
+      },
+      {
+        "id": "html-45-input-types-step-2",
+        "title": "أضف اختيار تقييم",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `<label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>` إلى `<label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تمكين المستخدم من اختيار تقييم واحد محدد ضمن خيارات متبادلة الاستبعاد.",
+        "expectedLine": "    <label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>\n    <label for=\"rating\">تقييم التجربة من 1 إلى 5:</label>\n    <input id=\"rating\" name=\"rating\" type=\"number\" min=\"1\" max=\"5\">",
+        "from": "    <label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>",
+        "to": "    <label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>\n    <label for=\"rating\">تقييم التجربة من 1 إلى 5:</label>\n    <input id=\"rating\" name=\"rating\" type=\"number\" min=\"1\" max=\"5\">",
+        "task": "بدّل `<label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>` إلى `<label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `<label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>` بـ `<label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>     <label for=\"rating\">تقييم التجربة من 1 إلى 5:</label>     <input id=\"rating\" name=\"rating\" type=\"number\" min=\"1\" max=\"5\">` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `<label><input type=\"checkbox\" name=\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «أنواع حقول الإدخال input types المختلفة»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\n<label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>\n    <label for=\"rating\">تقييم التجربة من 1 إلى 5:</label>\n    <input id=\"rating\" name=\"rating\" type=\"number\" min=\"1\" max=\"5\">",
+          "الحل النموذجي لهذه الخطوة:\n<label><input type=\"checkbox\" name=\"reminder\"> أريد تذكيرًا</label>\n    <label for=\"rating\">تقييم التجربة من 1 إلى 5:</label>\n    <input id=\"rating\" name=\"rating\" type=\"number\" min=\"1\" max=\"5\">"
+        ]
+      },
+      {
+        "id": "html-45-input-types-step-3",
+        "title": "اجعل الاختيارات متعددة",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `type=\"checkbox\"` إلى `type=\"radio\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: توفير حرية اختيار أكثر من ميزة أو خيار في نفس الوقت.",
+        "expectedLine": "type=\"radio\"",
+        "from": "type=\"checkbox\"",
+        "to": "type=\"radio\"",
+        "task": "بدّل `type=\"checkbox\"` إلى `type=\"radio\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `type=\"checkbox\"` بـ `type=\"radio\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `type=\"checkbox\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «أنواع حقول الإدخال input types المختلفة»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\ntype=\"radio\"",
+          "الحل النموذجي لهذه الخطوة:\ntype=\"radio\""
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "<input type=\"radio\" name=\"gender1\" value=\"male\"> ذكر\n<input type=\"radio\" name=\"gender2\" value=\"female\"> أنثى",
+      "fixedCode": "<input type=\"radio\" name=\"gender\" value=\"male\"> ذكر\n<input type=\"radio\" name=\"gender\" value=\"female\"> أنثى",
+      "question": "لماذا لم تعمل أزرار الاختيار كخيارات حصرية (يمكن اختيار أحدهما فقط) في الكود المعروض؟",
+      "explanation": "لكي تعمل أزرار الاختيار radio كفريق واحد متبادل الاستبعاد، يجب أن تشترك جميع الأزرار في المجموعة في نفس قيمة الخاصية name تماماً. اختلاف name جعل كل زر يعمل كحقل مستقل يمكن اختيارهما معاً.",
+      "options": [
+        "يجب أن تشترك أزرار radio في نفس خاصية name لتعمل كمجموعة حصرية",
+        "يجب تغيير النوع من radio إلى checkbox",
+        "خاصية value محظورة في أزرار الاختيار",
+        "لا يمكن وضع أكثر من زر اختيار في الصفحة"
+      ],
+      "correctOptionIndex": 0
+    }
+  },
+  {
+    "id": "html-46-input-attributes",
+    "legacyId": "html:45",
+    "title": "خصائص حقول الإدخال والتحقق التلقائي",
+    "skill": "نموذج يجمع البيانات",
+    "order": 45,
+    "concept": "تعرض placeholder مثالًا يختفي عند الكتابة، وتمنع maxlength تجاوز عدد معين من الحروف، وتفرض required ملء الحقل قبل السماح بإرسال النموذج.",
+    "whyUse": "كيف تمنع إرسال حقل فارغ أو نص أطول من المسموح قبل حتى أن تكتب سطر JavaScript واحدًا؟ المتصفح يملك أدوات تحقق مدمجة داخل الحقل نفسه.",
+    "browserMechanics": "قبل إطلاق حدث submit، يفحص المتصفح قيود التحقق المدمجة (Constraint Validation) مثل required وmaxlength ويوقف الإرسال مع رسالة تنبيه فورية عند المخالفة.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Form_validation",
+    "code": "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>خصائص حقل الإدخال</title>\n</head>\n<body>\n  <h1>اسم المستخدم</h1>\n  <form action=\"#\">\n    <label for=\"user\">اسم قصير:</label>\n    <input id=\"user\" name=\"user\" type=\"text\" placeholder=\"مثال: نور\" maxlength=\"12\" required>\n    <button type=\"submit\">حفظ</button>\n  </form>\n</body>\n</html>",
+    "breakdown": [
+      "placeholder: تلميح قصير يظهر داخل الخانة قبل إدخال القيمة.",
+      "maxlength: أقصى عدد من الأحرف التي يسمح بإدخالها في الحقل النصي.",
+      "required: يجعل ملء الخانة شرطًا قبل الإرسال.",
+      "value: قيمة ابتدائية فعلية للخانة، بخلاف النص التلميحي."
+    ],
+    "steps": [
+      {
+        "id": "html-46-input-attributes-step-1",
+        "title": "غيّر التلميح",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `placeholder=\"مثال: نور\"` إلى `placeholder=\"اكتب اسمًا من اختيارك\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: إظهار مثال إرشادي خافت يوضح للمستخدم صيغة الإدخال المتوقعة.",
+        "expectedLine": "placeholder=\"اكتب اسمًا من اختيارك\"",
+        "from": "placeholder=\"مثال: نور\"",
+        "to": "placeholder=\"اكتب اسمًا من اختيارك\"",
+        "task": "بدّل `placeholder=\"مثال: نور\"` إلى `placeholder=\"اكتب اسمًا من اختيارك\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `placeholder=\"مثال: نور\"` بـ `placeholder=\"اكتب اسمًا من اختيارك\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `placeholder=\"مثال: نور\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص حقول الإدخال والتحقق التلقائي»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nplaceholder=\"اكتب اسمًا من اختيارك\"",
+          "الحل النموذجي لهذه الخطوة:\nplaceholder=\"اكتب اسمًا من اختيارك\""
+        ]
+      },
+      {
+        "id": "html-46-input-attributes-step-2",
+        "title": "زد عدد الأحرف المسموح",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `maxlength=\"12\"` إلى `maxlength=\"20\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: حماية قواعد البيانات بتحديد سقف أقصى لطول المدخلات ومنع كتابة نصوص مفرطة.",
+        "expectedLine": "maxlength=\"20\"",
+        "from": "maxlength=\"12\"",
+        "to": "maxlength=\"20\"",
+        "task": "بدّل `maxlength=\"12\"` إلى `maxlength=\"20\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `maxlength=\"12\"` بـ `maxlength=\"20\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `maxlength=\"12\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص حقول الإدخال والتحقق التلقائي»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nmaxlength=\"20\"",
+          "الحل النموذجي لهذه الخطوة:\nmaxlength=\"20\""
+        ]
+      },
+      {
+        "id": "html-46-input-attributes-step-3",
+        "title": "اجعل الحقل اختياريًا",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `maxlength=\"20\" required` إلى `maxlength=\"20\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: جعل ملء الحقل اختيارياً للسماح بإرسال النموذج حتى لو تركه الزائر فارغاً.",
+        "expectedLine": " maxlength=\"20\"",
+        "from": " maxlength=\"20\" required",
+        "to": " maxlength=\"20\"",
+        "task": "بدّل `maxlength=\"20\" required` إلى `maxlength=\"20\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `maxlength=\"20\" required` بـ `maxlength=\"20\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `maxlength=\"20\" required` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص حقول الإدخال والتحقق التلقائي»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nmaxlength=\"20\"",
+          "الحل النموذجي لهذه الخطوة:\nmaxlength=\"20\""
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "<input type=\"text\" name=\"user\" placehoder=\"اكتب اسمك\">",
+      "fixedCode": "<input type=\"text\" name=\"user\" placeholder=\"اكتب اسمك\">",
+      "question": "ما سبب عدم ظهور النص التوضيحي داخل مربع الإدخال في الكود المعروض؟",
+      "explanation": "خطأ إملائي في اسم الخاصية؛ كُتبت placehoder بحذف حرف l بدلاً من placeholder. لا يتعرف المتصفح على الخاصية الخاطئة ولا يعرض التلميح المؤقت.",
+      "options": [
+        "الخاصية placeholder تتطلب وسم إغلاق منفصل",
+        "خطأ إملائي في اسم الخاصية: كُتبت placehoder بدلاً من placeholder",
+        "لا يمكن كتابة تلميحات باللغة العربية داخل الحقول",
+        "يجب استبدال type=\"text\" بـ type=\"search\""
+      ],
+      "correctOptionIndex": 1
+    }
+  },
+  {
+    "id": "html-47-input-form-attributes",
+    "legacyId": "html:46",
+    "title": "خصائص زر الإرسال المتقدمة وإدارة النماذج",
+    "skill": "نموذج يجمع البيانات",
+    "order": 46,
+    "concept": "تتيح سمات الزر مثل formaction وformmethod تجاوز إعدادات <form> الأصلية لزر إرسال معين، مما يسمح بإرسال نفس البيانات إلى مسار مختلف عند الضغط على هذا الزر.",
+    "whyUse": "تخيل نموذجًا واحدًا يحتوي زر «حفظ كمسودة» وزر «نشر نهائي» — هل تحتاج إنشاء نموذجين منفصلين؟ لا، يمكن لكل زر أن يغيّر وجهة وطريقة الإرسال الخاصة به.",
+    "browserMechanics": "عند النقر على زر submit يحمل formaction أو formmethod، يعتمد المتصفح قيم الزر بدل قيم <form> الأب عند بناء طلب الإرسال.",
+    "documentationUrl": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit",
+    "code": "<!DOCTYPE html>\n<html lang=\"ar\" dir=\"rtl\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>إعدادات زر الإرسال</title>\n</head>\n<body>\n  <h1>حفظ ملاحظة</h1>\n  <form action=\"/save\" method=\"get\">\n    <label for=\"note\">الملاحظة:</label>\n    <input id=\"note\" name=\"note\" type=\"text\">\n    <button type=\"submit\" formaction=\"/preview\" formmethod=\"get\">معاينة</button>\n  </form>\n</body>\n</html>",
+    "breakdown": [
+      "action: وجهة النموذج الافتراضية.",
+      "formaction: وجهة بديلة يستخدمها زر الإرسال الذي يحملها.",
+      "method: طريقة الإرسال الافتراضية للنموذج.",
+      "formmethod: طريقة بديلة مرتبطة بزر submit بعينه."
+    ],
+    "steps": [
+      {
+        "id": "html-47-input-form-attributes-step-1",
+        "title": "غيّر وجهة المعاينة",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `formaction=\"/preview\"` إلى `formaction=\"/draft\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تجاوز مسار النموذج الأساسي وإرسال البيانات لمسار المعاينة حصراً عند نقر هذا الزر.",
+        "expectedLine": "formaction=\"/draft\"",
+        "from": "formaction=\"/preview\"",
+        "to": "formaction=\"/draft\"",
+        "task": "بدّل `formaction=\"/preview\"` إلى `formaction=\"/draft\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `formaction=\"/preview\"` بـ `formaction=\"/draft\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `formaction=\"/preview\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص زر الإرسال المتقدمة وإدارة النماذج»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nformaction=\"/draft\"",
+          "الحل النموذجي لهذه الخطوة:\nformaction=\"/draft\""
+        ]
+      },
+      {
+        "id": "html-47-input-form-attributes-step-2",
+        "title": "أضف زر الحفظ الأساسي",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `</form>` إلى `<button type=\"submit\">حفظ</button>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: توفير زر الإرسال النهائي الذي يعتمد على إعدادات النموذج الأب.",
+        "expectedLine": "    <button type=\"submit\">حفظ</button>\n  </form>",
+        "from": "  </form>",
+        "to": "    <button type=\"submit\">حفظ</button>\n  </form>",
+        "task": "بدّل `</form>` إلى `<button type=\"submit\">حفظ</button>` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `</form>` بـ `<button type=\"submit\">حفظ</button>   </form>` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `</form>` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص زر الإرسال المتقدمة وإدارة النماذج»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\n<button type=\"submit\">حفظ</button>\n  </form>",
+          "الحل النموذجي لهذه الخطوة:\n<button type=\"submit\">حفظ</button>\n  </form>"
+        ]
+      },
+      {
+        "id": "html-47-input-form-attributes-step-3",
+        "title": "غيّر طريقة زر المعاينة",
+        "objective": "استبدال الجزء المحدد وملاحظة كيف يعيد المتصفح عرض الصفحة",
+        "type": "edit",
+        "instruction": "بدّل `formmethod=\"get\"` إلى `formmethod=\"post\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "benefit": "فائدة ما أنشأته للتو: تغيير بروتوكول الإرسال لزر منفرد من GET إلى POST بصورة مستقلة تماماً.",
+        "expectedLine": "formmethod=\"post\"",
+        "from": "formmethod=\"get\"",
+        "to": "formmethod=\"post\"",
+        "task": "بدّل `formmethod=\"get\"` إلى `formmethod=\"post\"` ثم شغّل وشاهد ما الذي تغيّر في النتيجة.",
+        "explanation": "في هذه الخطوة سنستبدل `formmethod=\"get\"` بـ `formmethod=\"post\"` لنرى كيف يتفاعل المتصفح مع التغيير. راقب الفارق بين الحالة السابقة والجديدة في المعاينة الحية.",
+        "errorRules": [
+          {
+            "pattern": "<(br|hr|img|input|meta|link)\\b[^>]*>\\s*<\\/\\1>",
+            "flags": "i",
+            "type": "regex",
+            "message": "عنصر <$1> عنصر فارغ (Void Element) لا يقبل وسم إغلاق منفصل مثل </$1>."
+          },
+          {
+            "pattern": "<[a-z1-6]+\\s*>\\s*(?:src|href|class|id|alt|style|type)\\s*=",
+            "flags": "i",
+            "type": "regex",
+            "message": "الخاصية مكتوبة خارج أقواس الوسم. ضع الخصائص داخل وسم الفتح قبل > مباشرة."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `formmethod=\"get\"` — تغييره وحده كافٍ لتظهر نتيجة هذه الخطوة.",
+          "لماذا ينتظر المتصفح هذا التعديل تحديدًا في درس «خصائص زر الإرسال المتقدمة وإدارة النماذج»؟ لأن الوسوم والسمات تُقرأ كما كُتبت؛ هل تأكدت من الأقواس وعلامات التنصيص وموضع السطر؟",
+          "التعديل المطلوب في هذا الموضع هو:\nformmethod=\"post\"",
+          "الحل النموذجي لهذه الخطوة:\nformmethod=\"post\""
+        ]
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "<form action=\"/save\">\n  <button type=\"submit\" form-action=\"/preview\">معاينة</button>\n</form>",
+      "fixedCode": "<form action=\"/save\">\n  <button type=\"submit\" formaction=\"/preview\">معاينة</button>\n</form>",
+      "question": "ما هو الخطأ في اسم سمة تجاوز وجهة النموذج لزر المعاينة؟",
+      "explanation": "اسم السمة القياسي في HTML5 هو formaction ككلمة واحدة متصلة دون شرطة تفصل بينهما (formaction وليس form-action).",
+      "options": [
+        "لا يمكن تغيير وجهة الإرسال لزر منفرد",
+        "خاصية formaction محصورة بوسم input فقط ولا تعمل مع button",
+        "اسم السمة القياسي هو formaction كلمة واحدة دون شرطة",
+        "يجب كتابة الوجهة بصيغة GET فقط"
+      ],
+      "correctOptionIndex": 2
+    }
+  }
+]

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/widget_badge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="steplearn · تجربة بانتظارك"
+            android:textColor="#FF8CE5BE"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/widget_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="كيف تصنع بطاقة زجاجية شفافة دون التأثير على وضوح النص؟"
+        android:textColor="#FFEAF3EE"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/widget_preview_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/widget_preview_desc"
+        android:scaleType="fitCenter" />
+
+    <Button
+        android:id="@+id/widget_open_btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/widget_btn_bg"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="افتح التجربة"
+        android:textAllCaps="false"
+        android:textColor="#FF0B110E"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

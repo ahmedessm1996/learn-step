@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">steplearn</string>
+    <string name="app_tagline">اكتشف الكود بالتجربة</string>
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_courses">المسارات</string>
+    <string name="nav_builds">تجاربي ومشاريعي</string>
+    <string name="btn_continue_experiment">أكمل التجربة</string>
+    <string name="btn_open_and_see">افتح وشوف النتيجة</string>
+    <string name="btn_explore_tracks">استكشف المسارات</string>
+    <string name="btn_start_building">ابدأ التجربة</string>
+    <string name="btn_run_code">تشغيل</string>
+    <string name="btn_next_step">الخطوة التالية</string>
+    <string name="btn_finish_experiment">إتمام التجربة</string>
+    <string name="btn_tinker_mode">تجربة حرة</string>
+    <string name="btn_guided_mode">موجه</string>
+    <string name="btn_profiles">ملفات التعلّم</string>
+    <string name="widget_label">تجربة steplearn</string>
+    <string name="widget_description">بطاقة هادئة تعرض السؤال الحالي وصورة النتيجة لتفتح التجربة مباشرة.</string>
+    <string name="widget_preview_desc">معاينة النتيجة المرئية للتجربة الحالية</string>
+</resources>

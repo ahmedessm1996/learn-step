@@ -1,0 +1,922 @@
+[
+  {
+    "id": "ng-component-create",
+    "phase": "تقسيم المكونات",
+    "title": "إنشاء مكوّن فرعي لبطاقة الفيلم",
+    "concept": "ماذا يتغير في ملفات التشغيل عندما نبني المكون دون أن يتبع وحدة NgModule؟ في Angular نقسم الواجهة الكبيرة إلى مكوّنات صغيرة مستقلة لسهولة صيانتها وإعادة استخدامها في أماكن متعددة.",
+    "flow": "المكون الرئيسي (App) ⟶ يحتوي على مكوّن بطاقة الفيلم (MovieCard)",
+    "task": "أنشئ كلاس مكوّن بطاقة الفيلم MovieCard في src/app/movie-card.ts.",
+    "file": "src/app/movie-card.ts",
+    "code": "import { Component, input } from '@angular/core';\n\n@Component({\n  selector: 'app-movie-card',\n  standalone: true,\n  template: '<div class=\"movie-box\"><h3>{{ title() }}</h3></div>'\n})\nexport class MovieCard {\n  readonly title = input<string>('فيلم سينمائي');\n}",
+    "expected": "export class MovieCard",
+    "reference": "https://angular.dev/guide/components",
+    "steps": [
+      {
+        "id": "idea",
+        "type": "observe",
+        "title": "الفكرة الأساسية ومخطط التدفق",
+        "explanation": "تخيل لو كان كود تطبيق فيسبوك أو يوتيوب بأكمله في ملف واحد! سيكون مستحيلاً تعديله. تقسيم التطبيق إلى مكونات مستقلة هو السر وراء بناء مشاريع ضخمة قابلة للتوسع.",
+        "flow": "تطبيق كبير ⟶ تفكيك إلى مكونات صغيرة (Header, MovieCard, SeatPicker, Footer)",
+        "task": "انتقل إلى ملف src/app/movie-card.ts في شجرة الملفات.",
+        "benefit": "فهمت فلسفة العمارة القائمة على المكونات (Component Architecture).",
+        "objective": "انتقل إلى ملف src/app/movie-card.ts في شجرة الملفات.",
+        "instruction": "انتقل إلى ملف src/app/movie-card.ts في شجرة الملفات.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إنشاء مكوّن فرعي لبطاقة الفيلم»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «الفكرة الأساسية ومخطط التدفق».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: export class MovieCard",
+          "كشف الحل لملف src/app/movie-card.ts: export class MovieCard"
+        ]
+      },
+      {
+        "id": "anatomy",
+        "type": "observe",
+        "title": "تشريح مكوّن MovieCard الفرعي",
+        "explanation": "المكون له selector خاص به 'app-movie-card' وقالب مضمن template وكلاس يحمل بيانات الفيلم المستقلة.",
+        "flow": "selector: 'app-movie-card' ⟶ استدعاء المكون في أي مكان بـ <app-movie-card>",
+        "task": "لاحظ كيف يكون لكل مكوّن استقلالية تامة في منطقه وشكله.",
+        "benefit": "تعلمت كيفية إنشاء مكونات فرعية نظيفة ومستقلة.",
+        "objective": "لاحظ كيف يكون لكل مكوّن استقلالية تامة في منطقه وشكله.",
+        "instruction": "لاحظ كيف يكون لكل مكوّن استقلالية تامة في منطقه وشكله.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إنشاء مكوّن فرعي لبطاقة الفيلم»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تشريح مكوّن MovieCard الفرعي».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: export class MovieCard",
+          "كشف الحل لملف src/app/movie-card.ts: export class MovieCard"
+        ]
+      },
+      {
+        "id": "practice",
+        "type": "build",
+        "title": "اكتب وطبّق في المحرر",
+        "explanation": "اكتب تعريف مكوّن MovieCard داخل ملف src/app/movie-card.ts.",
+        "file": "src/app/movie-card.ts",
+        "code": "import { Component, input } from '@angular/core';\n\n@Component({\n  selector: 'app-movie-card',\n  standalone: true,\n  template: '<div class=\"movie-box\"><h3>{{ title() }}</h3></div>'\n})\nexport class MovieCard {\n  readonly title = input<string>('فيلم سينمائي');\n}",
+        "expected": "export class MovieCard",
+        "task": "اكتب كود المكون ثم اضغط (شغّل وافحص).",
+        "benefit": "أنشأت أول مكوّن فرعي قابل لإعادة الاستخدام في مشروعك.",
+        "objective": "اكتب كود المكون ثم اضغط (شغّل وافحص).",
+        "instruction": "اكتب كود المكون ثم اضغط (شغّل وافحص).",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إنشاء مكوّن فرعي لبطاقة الفيلم»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «اكتب وطبّق في المحرر».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: export class MovieCard",
+          "كشف الحل لملف src/app/movie-card.ts: export class MovieCard"
+        ]
+      },
+      {
+        "id": "experiment",
+        "type": "edit",
+        "title": "تعديل موجّه وتجربة تفاعلية",
+        "explanation": "يمكن استخدام هذا المكون عشرات المرات في الصفحة لعرض بطاقة لكل فيلم دون تكرار أي كود HTML!",
+        "task": "تأكد من إنشاء وحفظ ملف movie-card.ts بنجاح.",
+        "benefit": "أتقنت إنشاء المكونات المستقلة في Angular.",
+        "objective": "تأكد من إنشاء وحفظ ملف movie-card.ts بنجاح.",
+        "instruction": "تأكد من إنشاء وحفظ ملف movie-card.ts بنجاح.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إنشاء مكوّن فرعي لبطاقة الفيلم»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تعديل موجّه وتجربة تفاعلية».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: export class MovieCard",
+          "كشف الحل لملف src/app/movie-card.ts: export class MovieCard"
+        ]
+      },
+      {
+        "id": "quiz",
+        "type": "quiz",
+        "title": "تأكد من الفكرة بسؤال سريع",
+        "question": "ما الفائدة الأساسية من تقسيم شاشات التطبيق إلى مكونات فرعية في Angular؟",
+        "options": [
+          "إعادة استخدام الكود بسهولة وتنظيم المشروع وتبسيط صيانته",
+          "لجعل حجم خط النصوص أكبر دائمًا",
+          "لإلغاء الحاجة إلى لغة CSS"
+        ],
+        "correct": 0,
+        "benefit": "فهم قيمة العمارة البرمجية للمكونات Component-Based Architecture.",
+        "task": "ما الفائدة الأساسية من تقسيم شاشات التطبيق إلى مكونات فرعية في Angular؟",
+        "objective": "ما الفائدة الأساسية من تقسيم شاشات التطبيق إلى مكونات فرعية في Angular؟",
+        "instruction": "ما الفائدة الأساسية من تقسيم شاشات التطبيق إلى مكونات فرعية في Angular؟",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إنشاء مكوّن فرعي لبطاقة الفيلم»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تأكد من الفكرة بسؤال سريع».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: export class MovieCard",
+          "كشف الحل لملف src/app/movie-card.ts: export class MovieCard"
+        ]
+      }
+    ],
+    "summary": "ماذا يتغير في ملفات التشغيل عندما نبني المكون دون أن يتبع وحدة NgModule؟ في هذا الدرس نعاين أثر «إنشاء مكوّن فرعي لبطاقة الفيلم» عمليًا.",
+    "legacyId": "ng-component-create",
+    "skill": "تقسيم المكونات",
+    "order": 83,
+    "whyUse": "تطبيق «إنشاء مكوّن فرعي لبطاقة الفيلم» داخل مشروع حجز السينما يربط بين التنظيم النظيف للكود ووضوح الاختبار والصيانة عندما تتوسع شاشات التطبيق.",
+    "browserMechanics": "تجمع أدوات البناء مكونات السينما وتزيل الشيفرة غير المستعملة (Tree-shaking) وتضغط المخرجات في «إنشاء مكوّن فرعي لبطاقة الفيلم» ليصل المتصفح إلى ملفات واضحة وصغيرة الحجم.",
+    "documentationUrl": "https://angular.dev/guide/components",
+    "breakdown": [
+      "تعريف البنية والمحددات: إعداد المكون أو المتغير أو الواجهة البرمجية في ملفات المشروع.",
+      "معالجة المنطق وتدفق البيانات: تنفيذ الأوامر وحقن التبعيات أو ربط الإشارات التفاعلية.",
+      "تحديث شجرة DOM والعرض: إخراج النتيجة النهائية في قالب Angular وعكس التغييرات في المتصفح."
+    ],
+    "bugRepair": {
+      "brokenCode": "export const defaultCity = الرياض;",
+      "fixedCode": "export class MovieCard",
+      "question": "ما هو الخطأ البرمجي في الكود ولماذا يرفض مترجم Angular و TypeScript تنفيذه؟",
+      "explanation": "في لغة TypeScript و Angular، يجب الالتزام الصارم بقواعد الأنواع وصياغة القوالب وتحديد النصوص بين علامات تنصيص لتفادي أخطاء وقت الترجمة.",
+      "options": [
+        "عدم تحديد تعبير التتبع الإلزامي track داخل كتلة التحكم التكرارية الحديثة @for.",
+        "نسيان استيراد التوجيه أو الوحدة المطلوبة في مصفوفة imports الخاصة بالمكون المستقل.",
+        "محاولة تعديل قيمة الإشارة التفاعلية Signal بإسناد مباشر علامة = بدلاً من استدعاء .set().",
+        "عدم إحاطة القيمة النصية بعلامات تنصيص صريحة مما جعل المترجم يعتبرها معرّفاً غير معرّف."
+      ],
+      "correctOptionIndex": 3
+    }
+  },
+  {
+    "id": "ng-component-input",
+    "phase": "تقسيم المكونات",
+    "title": "تمرير البيانات للمكوّن الابن بـ `input()`",
+    "concept": "كيف يمرر المكون الأب عنوان الفيلم أو رقم المقعد إلى الابن دون أن يسمح للابن بتغييره عن طريق الخطأ؟ دالة input() الحديثة في Angular تستقبل البيانات من المكون الأب كإشارة (Signal Input) آمنة ومحكمة الأنواع.",
+    "flow": "المكون الأب يمرر [rating]=\"4.8\" ⟶ المكون الابن يستقبلها عبر input()",
+    "task": "أضف خاصية تقييم الفيلم rating عبر input() داخل MovieCard في src/app/movie-card.ts.",
+    "file": "src/app/movie-card.ts",
+    "code": "readonly rating = input<number>(4.8);",
+    "expected": "readonly rating = input<number>(4.8);",
+    "reference": "https://angular.dev/guide/signals/inputs",
+    "steps": [
+      {
+        "id": "idea",
+        "type": "observe",
+        "title": "الفكرة الأساسية ومخطط التدفق",
+        "explanation": "كيف يمرر المكون الأب بيانات مختلفة لكل بطاقة فيلم؟ نستخدم input() لفتح منفذ استقبال بيانات في المكون الابن يستقبل العنوان، التقييم، أو السعر!",
+        "flow": "المكون الأب (البيانات) ⟶ [الخاصية] ⟶ المكون الابن (يعرضها)",
+        "task": "افتح src/app/movie-card.ts لإضافة مدخل التقييم.",
+        "benefit": "فهمت تدفق البيانات من المكون الأب إلى المكون الابن.",
+        "objective": "افتح src/app/movie-card.ts لإضافة مدخل التقييم.",
+        "instruction": "افتح src/app/movie-card.ts لإضافة مدخل التقييم.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «تمرير البيانات للمكوّن الابن بـ `input()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «الفكرة الأساسية ومخطط التدفق».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly rating = input<number>(4.8);",
+          "كشف الحل لملف src/app/movie-card.ts: readonly rating = input<number>(4.8);"
+        ]
+      },
+      {
+        "id": "anatomy",
+        "type": "observe",
+        "title": "تشريح Signal Input الجديد",
+        "explanation": "دالة input<number>(4.8) تنشئ إشارة دخل بنوع رقم وقيمة افتراضية 4.8. يمكن قراءتها داخل القالب بالأقواس rating().",
+        "flow": "readonly rating = input<number>(4.8) ⟶ قراءة بالقالب بـ rating()",
+        "task": "قارن سهولة input() الجديدة مقارنة بالزخرف القديم @Input.",
+        "benefit": "أتقنت استخدام Signal Inputs الحديثة في Angular 17+.",
+        "objective": "قارن سهولة input() الجديدة مقارنة بالزخرف القديم @Input.",
+        "instruction": "قارن سهولة input() الجديدة مقارنة بالزخرف القديم @Input.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «تمرير البيانات للمكوّن الابن بـ `input()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تشريح Signal Input الجديد».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly rating = input<number>(4.8);",
+          "كشف الحل لملف src/app/movie-card.ts: readonly rating = input<number>(4.8);"
+        ]
+      },
+      {
+        "id": "practice",
+        "type": "build",
+        "title": "اكتب وطبّق في المحرر",
+        "explanation": "أضف مدخل التقييم rating داخل كلاس MovieCard في src/app/movie-card.ts.",
+        "file": "src/app/movie-card.ts",
+        "code": "readonly rating = input<number>(4.8);",
+        "expected": "readonly rating = input<number>(4.8);",
+        "task": "أضف السطر داخل الكلاس ثم اضغط (شغّل وافحص).",
+        "benefit": "أضفت منفذ استقبال تقييم الفيلم كإشارة دخل في المكون.",
+        "objective": "أضف السطر داخل الكلاس ثم اضغط (شغّل وافحص).",
+        "instruction": "أضف السطر داخل الكلاس ثم اضغط (شغّل وافحص).",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «تمرير البيانات للمكوّن الابن بـ `input()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «اكتب وطبّق في المحرر».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly rating = input<number>(4.8);",
+          "كشف الحل لملف src/app/movie-card.ts: readonly rating = input<number>(4.8);"
+        ]
+      },
+      {
+        "id": "experiment",
+        "type": "edit",
+        "title": "تعديل موجّه وتجربة تفاعلية",
+        "explanation": "يمكن لأي مكون أب الآن تمرير [rating]=\"5.0\" لعرض نجمة الفيلم المميز.",
+        "task": "تأكد من وجود خاصية rating في الكلاس.",
+        "benefit": "أصبحت جاهزًا لإرسال واستقبال البيانات بين المكونات.",
+        "objective": "تأكد من وجود خاصية rating في الكلاس.",
+        "instruction": "تأكد من وجود خاصية rating في الكلاس.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «تمرير البيانات للمكوّن الابن بـ `input()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تعديل موجّه وتجربة تفاعلية».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly rating = input<number>(4.8);",
+          "كشف الحل لملف src/app/movie-card.ts: readonly rating = input<number>(4.8);"
+        ]
+      },
+      {
+        "id": "quiz",
+        "type": "quiz",
+        "title": "تأكد من الفكرة بسؤال سريع",
+        "question": "ماذا ترجع دالة input() الحديثة في Angular؟",
+        "options": [
+          "ترجع إشارة (Signal) يمكن قراءتها بالأقواس وتحمل القيمة الممررة من الأب",
+          "ترجع كائن التاريخ الحالي",
+          "ترجع اسم المتصفح"
+        ],
+        "correct": 0,
+        "benefit": "ترسيخ حقيقة أن مدخلات input() الحديثة هي Signals تفاعلية.",
+        "task": "ماذا ترجع دالة input() الحديثة في Angular؟",
+        "objective": "ماذا ترجع دالة input() الحديثة في Angular؟",
+        "instruction": "ماذا ترجع دالة input() الحديثة في Angular؟",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «تمرير البيانات للمكوّن الابن بـ `input()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تأكد من الفكرة بسؤال سريع».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly rating = input<number>(4.8);",
+          "كشف الحل لملف src/app/movie-card.ts: readonly rating = input<number>(4.8);"
+        ]
+      }
+    ],
+    "summary": "كيف يمرر المكون الأب عنوان الفيلم أو رقم المقعد إلى الابن دون أن يسمح للابن بتغييره عن طريق الخطأ؟ في هذا الدرس نعاين أثر «تمرير البيانات للمكوّن الابن بـ `input()`» عمليًا.",
+    "legacyId": "ng-component-input",
+    "skill": "تقسيم المكونات",
+    "order": 84,
+    "whyUse": "تطبيق «تمرير البيانات للمكوّن الابن بـ `input()`» داخل مشروع حجز السينما يربط بين التنظيم النظيف للكود ووضوح الاختبار والصيانة عندما تتوسع شاشات التطبيق.",
+    "browserMechanics": "تجمع أدوات البناء مكونات السينما وتزيل الشيفرة غير المستعملة (Tree-shaking) وتضغط المخرجات في «تمرير البيانات للمكوّن الابن بـ `input()`» ليصل المتصفح إلى ملفات واضحة وصغيرة الحجم.",
+    "documentationUrl": "https://angular.dev/guide/signals/inputs",
+    "breakdown": [
+      "تعريف البنية والمحددات: إعداد المكون أو المتغير أو الواجهة البرمجية في ملفات المشروع.",
+      "معالجة المنطق وتدفق البيانات: تنفيذ الأوامر وحقن التبعيات أو ربط الإشارات التفاعلية.",
+      "تحديث شجرة DOM والعرض: إخراج النتيجة النهائية في قالب Angular وعكس التغييرات في المتصفح."
+    ],
+    "bugRepair": {
+      "brokenCode": "export const defaultCity = الرياض;",
+      "fixedCode": "readonly rating = input<number>(4.8);",
+      "question": "ما هو الخطأ البرمجي في الكود ولماذا يرفض مترجم Angular و TypeScript تنفيذه؟",
+      "explanation": "في لغة TypeScript و Angular، يجب الالتزام الصارم بقواعد الأنواع وصياغة القوالب وتحديد النصوص بين علامات تنصيص لتفادي أخطاء وقت الترجمة.",
+      "options": [
+        "عدم إحاطة القيمة النصية بعلامات تنصيص صريحة مما جعل المترجم يعتبرها معرّفاً غير معرّف.",
+        "نسيان استيراد التوجيه أو الوحدة المطلوبة في مصفوفة imports الخاصة بالمكون المستقل.",
+        "محاولة تعديل قيمة الإشارة التفاعلية Signal بإسناد مباشر علامة = بدلاً من استدعاء .set().",
+        "عدم تحديد تعبير التتبع الإلزامي track داخل كتلة التحكم التكرارية الحديثة @for."
+      ],
+      "correctOptionIndex": 0
+    }
+  },
+  {
+    "id": "ng-component-output",
+    "phase": "تقسيم المكونات",
+    "title": "إرسال الأحداث للمكون الأب بـ `output()`",
+    "concept": "كيف يخبر مكون المقعد المكون الأب أن الزائر اختار مقعدًا دون أن يعرف شيئًا عن حسابات الفاتورة؟ دالة output() الحديثة تُنشئ مخرج أحداث يُرسل إشعارًا للمكون الأب عند قيام المستخدم بفعل معين داخل الابن (مثل النقر على اختيار فيلم).",
+    "flow": "نقر في بطاقة الفيلم ⟶ selected.emit(movieId) ⟶ يلتقطها الأب (selected)=\"onSelect($event)\"",
+    "task": "أضف مخرج الأحداث selected داخل كلاس MovieCard في src/app/movie-card.ts.",
+    "file": "src/app/movie-card.ts",
+    "code": "readonly selected = output<number>();",
+    "expected": "readonly selected = output<number>();",
+    "reference": "https://angular.dev/guide/components/outputs",
+    "steps": [
+      {
+        "id": "idea",
+        "type": "observe",
+        "title": "الفكرة الأساسية ومخطط التدفق",
+        "explanation": "إذا نقر المستخدم على زر داخل بطاقة فيلم فرعية، كيف يعلم المكون الرئيسي ليقوم بحجز التذكرة؟ نستخدم output() لإطلاق حدث يلتقطه المكون الأب فورًا!",
+        "flow": "فعل في المكون الابن ⟶ output() ⟶ إشعار المكون الأب ⟶ تنفيذ الحجز",
+        "task": "افتح src/app/movie-card.ts لإضافة مخرج الأحداث.",
+        "benefit": "فهمت التواصل الصاعد من الابن إلى الأب (Child to Parent Communication).",
+        "objective": "افتح src/app/movie-card.ts لإضافة مخرج الأحداث.",
+        "instruction": "افتح src/app/movie-card.ts لإضافة مخرج الأحداث.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إرسال الأحداث للمكون الأب بـ `output()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «الفكرة الأساسية ومخطط التدفق».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly selected = output<number>();",
+          "كشف الحل لملف src/app/movie-card.ts: readonly selected = output<number>();"
+        ]
+      },
+      {
+        "id": "anatomy",
+        "type": "observe",
+        "title": "تشريح دالة output() الجديدة",
+        "explanation": "دالة output<number>() تُنشئ مخرج أحداث نظيف. لإرسال البيانات نكتب this.selected.emit(1).",
+        "flow": "selected = output<number>() ⟶ selected.emit(id)",
+        "task": "لاحظ سهولة واستقرار output() مقارنة بـ EventEmitter القديمة.",
+        "benefit": "أتقنت استخدام مخرجات الأحداث الحديثة في Angular.",
+        "objective": "لاحظ سهولة واستقرار output() مقارنة بـ EventEmitter القديمة.",
+        "instruction": "لاحظ سهولة واستقرار output() مقارنة بـ EventEmitter القديمة.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إرسال الأحداث للمكون الأب بـ `output()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تشريح دالة output() الجديدة».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly selected = output<number>();",
+          "كشف الحل لملف src/app/movie-card.ts: readonly selected = output<number>();"
+        ]
+      },
+      {
+        "id": "practice",
+        "type": "build",
+        "title": "اكتب وطبّق في المحرر",
+        "explanation": "أضف مخرج الأحداث selected داخل كلاس MovieCard في src/app/movie-card.ts.",
+        "file": "src/app/movie-card.ts",
+        "code": "readonly selected = output<number>();",
+        "expected": "readonly selected = output<number>();",
+        "task": "أضف السطر داخل الكلاس ثم اضغط (شغّل وافحص).",
+        "benefit": "جهزت منفذ إطلاق أحداث اختيار الأفلام في المكون الفرعي.",
+        "objective": "أضف السطر داخل الكلاس ثم اضغط (شغّل وافحص).",
+        "instruction": "أضف السطر داخل الكلاس ثم اضغط (شغّل وافحص).",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إرسال الأحداث للمكون الأب بـ `output()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «اكتب وطبّق في المحرر».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly selected = output<number>();",
+          "كشف الحل لملف src/app/movie-card.ts: readonly selected = output<number>();"
+        ]
+      },
+      {
+        "id": "experiment",
+        "type": "edit",
+        "title": "تعديل موجّه وتجربة تفاعلية",
+        "explanation": "عند ربط هذا المخرج، يستطيع الأب الاستماع إليه عبر (selected)=\"onMovieChosen($event)\".",
+        "task": "تأكد من تعريف selected بنجاح.",
+        "benefit": "أتقنت التواصل ثنائي الاتجاه المتكامل بين المكونات.",
+        "objective": "تأكد من تعريف selected بنجاح.",
+        "instruction": "تأكد من تعريف selected بنجاح.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إرسال الأحداث للمكون الأب بـ `output()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تعديل موجّه وتجربة تفاعلية».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly selected = output<number>();",
+          "كشف الحل لملف src/app/movie-card.ts: readonly selected = output<number>();"
+        ]
+      },
+      {
+        "id": "quiz",
+        "type": "quiz",
+        "title": "تأكد من الفكرة بسؤال سريع",
+        "question": "ما الدالة المستخدمة لإطلاق وإرسال حدث عبر مخرج output()؟",
+        "options": [
+          "دالة emit() مثل myOutput.emit(data)",
+          "دالة fire()",
+          "دالة send()"
+        ],
+        "correct": 0,
+        "benefit": "حفظ دالة emit() لإطلاق أحداث المكونات.",
+        "task": "ما الدالة المستخدمة لإطلاق وإرسال حدث عبر مخرج output()؟",
+        "objective": "ما الدالة المستخدمة لإطلاق وإرسال حدث عبر مخرج output()؟",
+        "instruction": "ما الدالة المستخدمة لإطلاق وإرسال حدث عبر مخرج output()؟",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/movie-card.ts لدرس «إرسال الأحداث للمكون الأب بـ `output()`»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تأكد من الفكرة بسؤال سريع».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/movie-card.ts؟",
+          "توجيه محدد في src/app/movie-card.ts: ركّز على كتابة الصيغة المطلوبة: readonly selected = output<number>();",
+          "كشف الحل لملف src/app/movie-card.ts: readonly selected = output<number>();"
+        ]
+      }
+    ],
+    "summary": "كيف يخبر مكون المقعد المكون الأب أن الزائر اختار مقعدًا دون أن يعرف شيئًا عن حسابات الفاتورة؟ في هذا الدرس نعاين أثر «إرسال الأحداث للمكون الأب بـ `output()`» عمليًا.",
+    "legacyId": "ng-component-output",
+    "skill": "تقسيم المكونات",
+    "order": 85,
+    "whyUse": "تطبيق «إرسال الأحداث للمكون الأب بـ `output()`» داخل مشروع حجز السينما يربط بين التنظيم النظيف للكود ووضوح الاختبار والصيانة عندما تتوسع شاشات التطبيق.",
+    "browserMechanics": "تجمع أدوات البناء مكونات السينما وتزيل الشيفرة غير المستعملة (Tree-shaking) وتضغط المخرجات في «إرسال الأحداث للمكون الأب بـ `output()`» ليصل المتصفح إلى ملفات واضحة وصغيرة الحجم.",
+    "documentationUrl": "https://angular.dev/guide/components/outputs",
+    "breakdown": [
+      "المرحلة 1: نقر في بطاقة الفيلم",
+      "المرحلة 2: selected.emit(movieId)",
+      "المرحلة 3: يلتقطها الأب (selected)=\"onSelect($event)\""
+    ],
+    "bugRepair": {
+      "brokenCode": "export const defaultCity = الرياض;",
+      "fixedCode": "readonly selected = output<number>();",
+      "question": "ما هو الخطأ البرمجي في الكود ولماذا يرفض مترجم Angular و TypeScript تنفيذه؟",
+      "explanation": "في لغة TypeScript و Angular، يجب الالتزام الصارم بقواعد الأنواع وصياغة القوالب وتحديد النصوص بين علامات تنصيص لتفادي أخطاء وقت الترجمة.",
+      "options": [
+        "نسيان استيراد التوجيه أو الوحدة المطلوبة في مصفوفة imports الخاصة بالمكون المستقل.",
+        "عدم إحاطة القيمة النصية بعلامات تنصيص صريحة مما جعل المترجم يعتبرها معرّفاً غير معرّف.",
+        "محاولة تعديل قيمة الإشارة التفاعلية Signal بإسناد مباشر علامة = بدلاً من استدعاء .set().",
+        "عدم تحديد تعبير التتبع الإلزامي track داخل كتلة التحكم التكرارية الحديثة @for."
+      ],
+      "correctOptionIndex": 1
+    }
+  },
+  {
+    "id": "ng-component-use",
+    "phase": "تقسيم المكونات",
+    "title": "استخدام المكوّن الفرعي داخل المكوّن الرئيسي",
+    "concept": "ما السؤال العملي الذي يدفعنا لاستخدام «استخدام المكوّن الفرعي داخل المكوّن الرئيسي» داخل تطبيق السينما؟ في المكونات المستقلة (Standalone Components)، نقوم باستيراد المكون الفرعي في مصفوفة imports داخل المكون الرئيسي لاستخدامه في القالب.",
+    "flow": "imports: [MovieCard] ⟶ استخدام وسم <app-movie-card> في القالب بكل حرية",
+    "task": "استورد مكوّن MovieCard داخل ملف src/app/app.ts.",
+    "file": "src/app/app.ts",
+    "code": "import { MovieCard } from './movie-card';",
+    "expected": "import { MovieCard } from './movie-card';",
+    "reference": "https://angular.dev/guide/components/importing",
+    "steps": [
+      {
+        "id": "idea",
+        "type": "observe",
+        "title": "الفكرة الأساسية ومخطط التدفق",
+        "explanation": "في Angular المستقل (Standalone)، لا نحتاج لوحدات NgModules المعقدة بعد اليوم! كل مكوّن يستورد فقط ما يحتاجه مباشرة عبر مصفوفة imports.",
+        "flow": "استيراد MovieCard ⟶ وضعه في imports ⟶ استخدامه كوسم HTML في القالب",
+        "task": "افتح src/app/app.ts لإجراء الاستيراد.",
+        "benefit": "فهمت سهولة ونقاء نظام المكونات المستقلة Standalone Components.",
+        "objective": "افتح src/app/app.ts لإجراء الاستيراد.",
+        "instruction": "افتح src/app/app.ts لإجراء الاستيراد.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/app.ts لدرس «استخدام المكوّن الفرعي داخل المكوّن الرئيسي»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «الفكرة الأساسية ومخطط التدفق».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/app.ts؟",
+          "توجيه محدد في src/app/app.ts: ركّز على كتابة الصيغة المطلوبة: import { MovieCard } from './movie-card';",
+          "كشف الحل لملف src/app/app.ts: import { MovieCard } from './movie-card';"
+        ]
+      },
+      {
+        "id": "anatomy",
+        "type": "observe",
+        "title": "تشريح عبارة الاستيراد",
+        "explanation": "نستورد MovieCard من مساره النسبي './movie-card' في أعلى الملف، ثم نضعه داخل مصفوفة imports في زخرف @Component.",
+        "flow": "import { MovieCard } from './movie-card' ⟶ جاهز للاستخدام",
+        "task": "لاحظ التوافق التام والتنظيم العالي للمشروع.",
+        "benefit": "أتقنت استيراد واستدعاء المكونات الفرعية.",
+        "objective": "لاحظ التوافق التام والتنظيم العالي للمشروع.",
+        "instruction": "لاحظ التوافق التام والتنظيم العالي للمشروع.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/app.ts لدرس «استخدام المكوّن الفرعي داخل المكوّن الرئيسي»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تشريح عبارة الاستيراد».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/app.ts؟",
+          "توجيه محدد في src/app/app.ts: ركّز على كتابة الصيغة المطلوبة: import { MovieCard } from './movie-card';",
+          "كشف الحل لملف src/app/app.ts: import { MovieCard } from './movie-card';"
+        ]
+      },
+      {
+        "id": "practice",
+        "type": "build",
+        "title": "اكتب وطبّق في المحرر",
+        "explanation": "أضف سطر استيراد MovieCard في أعلى ملف src/app/app.ts.",
+        "file": "src/app/app.ts",
+        "code": "import { MovieCard } from './movie-card';",
+        "expected": "import { MovieCard } from './movie-card';",
+        "task": "أضف سطر الاستيراد ثم اضغط (شغّل وافحص).",
+        "benefit": "ربطت المكون الفرعي بالمكون الرئيسي بنجاح.",
+        "objective": "أضف سطر الاستيراد ثم اضغط (شغّل وافحص).",
+        "instruction": "أضف سطر الاستيراد ثم اضغط (شغّل وافحص).",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/app.ts لدرس «استخدام المكوّن الفرعي داخل المكوّن الرئيسي»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «اكتب وطبّق في المحرر».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/app.ts؟",
+          "توجيه محدد في src/app/app.ts: ركّز على كتابة الصيغة المطلوبة: import { MovieCard } from './movie-card';",
+          "كشف الحل لملف src/app/app.ts: import { MovieCard } from './movie-card';"
+        ]
+      },
+      {
+        "id": "experiment",
+        "type": "edit",
+        "title": "تعديل موجّه وتجربة تفاعلية",
+        "explanation": "يمكنك الآن كتابة <app-movie-card /> في قالب app.html في أي وقت لعرض بطاقة الفيلم.",
+        "task": "تأمل كيف أصبحت واجهتك مبنية من قطع ليغو قابلة للتركيب.",
+        "benefit": "أتقنت هندسة المكونات المعيارية في Angular.",
+        "objective": "تأمل كيف أصبحت واجهتك مبنية من قطع ليغو قابلة للتركيب.",
+        "instruction": "تأمل كيف أصبحت واجهتك مبنية من قطع ليغو قابلة للتركيب.",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/app.ts لدرس «استخدام المكوّن الفرعي داخل المكوّن الرئيسي»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تعديل موجّه وتجربة تفاعلية».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/app.ts؟",
+          "توجيه محدد في src/app/app.ts: ركّز على كتابة الصيغة المطلوبة: import { MovieCard } from './movie-card';",
+          "كشف الحل لملف src/app/app.ts: import { MovieCard } from './movie-card';"
+        ]
+      },
+      {
+        "id": "quiz",
+        "type": "quiz",
+        "title": "تأكد من الفكرة بسؤال سريع",
+        "question": "أين نضع المكونات الفرعية التي نريد استخدامها داخل قالب مكون Standalone؟",
+        "options": [
+          "داخل مصفوفة imports في زخرف @Component الخاص بالمكون الأب",
+          "في ملف styles.css",
+          "في إعدادات المتصفح"
+        ],
+        "correct": 0,
+        "benefit": "تثبيت مصفوفة imports في المكونات المستقلة.",
+        "task": "أين نضع المكونات الفرعية التي نريد استخدامها داخل قالب مكون Standalone؟",
+        "objective": "أين نضع المكونات الفرعية التي نريد استخدامها داخل قالب مكون Standalone؟",
+        "instruction": "أين نضع المكونات الفرعية التي نريد استخدامها داخل قالب مكون Standalone؟",
+        "errorRules": [
+          {
+            "pattern": "\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت كتلة أوامر أو كائن بقوس '{' ولكنك نسيت إغلاقه بقوس المقابلة '}'."
+          },
+          {
+            "pattern": "\\{\\{[^}]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت ربطاً بيانياً مزدوجاً {{ في قالب Angular ولكنك نسيت إغلاقه بـ }} المقابلة."
+          },
+          {
+            "pattern": "@for\\s*\\((?![^)]*\\btrack\\b)[^)]*\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "في نظام التحكم الحديث لـ Angular، تتطلب كتلة @for تحديد تعبير تتبع إلزامي مثل track item.id لضمان كفاءة تحديث عناصر DOM."
+          }
+        ],
+        "hints": [
+          "في ملف src/app/app.ts لدرس «استخدام المكوّن الفرعي داخل المكوّن الرئيسي»، تأمل كيف تتأثر الصياغة حول السطر المستهدف في الخطوة عند تنفيذ «تأكد من الفكرة بسؤال سريع».",
+          "تعتمد موثوقية السطر المستهدف في الخطوة في Angular وTypeScript على الدقة في الاسم والنوع وموضع القوس. هل تحققت من مطابقة السطر لما تطلبه الخطوة في src/app/app.ts؟",
+          "توجيه محدد في src/app/app.ts: ركّز على كتابة الصيغة المطلوبة: import { MovieCard } from './movie-card';",
+          "كشف الحل لملف src/app/app.ts: import { MovieCard } from './movie-card';"
+        ]
+      }
+    ],
+    "summary": "ما السؤال العملي الذي يدفعنا لاستخدام «استخدام المكوّن الفرعي داخل المكوّن الرئيسي» داخل تطبيق السينما؟ في هذا الدرس نعاين أثر «استخدام المكوّن الفرعي داخل المكوّن الرئيسي» عمليًا.",
+    "legacyId": "ng-component-use",
+    "skill": "تقسيم المكونات",
+    "order": 86,
+    "whyUse": "تطبيق «استخدام المكوّن الفرعي داخل المكوّن الرئيسي» داخل مشروع حجز السينما يربط بين التنظيم النظيف للكود ووضوح الاختبار والصيانة عندما تتوسع شاشات التطبيق.",
+    "browserMechanics": "تجمع أدوات البناء مكونات السينما وتزيل الشيفرة غير المستعملة (Tree-shaking) وتضغط المخرجات في «استخدام المكوّن الفرعي داخل المكوّن الرئيسي» ليصل المتصفح إلى ملفات واضحة وصغيرة الحجم.",
+    "documentationUrl": "https://angular.dev/guide/components/importing",
+    "breakdown": [
+      "تعريف البنية والمحددات: إعداد المكون أو المتغير أو الواجهة البرمجية في ملفات المشروع.",
+      "معالجة المنطق وتدفق البيانات: تنفيذ الأوامر وحقن التبعيات أو ربط الإشارات التفاعلية.",
+      "تحديث شجرة DOM والعرض: إخراج النتيجة النهائية في قالب Angular وعكس التغييرات في المتصفح."
+    ],
+    "bugRepair": {
+      "brokenCode": "export const defaultCity = الرياض;",
+      "fixedCode": "import { MovieCard } from './movie-card';",
+      "question": "ما هو الخطأ البرمجي في الكود ولماذا يرفض مترجم Angular و TypeScript تنفيذه؟",
+      "explanation": "في لغة TypeScript و Angular، يجب الالتزام الصارم بقواعد الأنواع وصياغة القوالب وتحديد النصوص بين علامات تنصيص لتفادي أخطاء وقت الترجمة.",
+      "options": [
+        "محاولة تعديل قيمة الإشارة التفاعلية Signal بإسناد مباشر علامة = بدلاً من استدعاء .set().",
+        "نسيان استيراد التوجيه أو الوحدة المطلوبة في مصفوفة imports الخاصة بالمكون المستقل.",
+        "عدم إحاطة القيمة النصية بعلامات تنصيص صريحة مما جعل المترجم يعتبرها معرّفاً غير معرّف.",
+        "عدم تحديد تعبير التتبع الإلزامي track داخل كتلة التحكم التكرارية الحديثة @for."
+      ],
+      "correctOptionIndex": 2
+    }
+  }
+]

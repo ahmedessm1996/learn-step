@@ -1,0 +1,586 @@
+[
+  {
+    "id": "js-75-js-iterations",
+    "legacyId": "js:74",
+    "title": "بروتوكول التكرار وحلقة for...of الحديثة",
+    "skill": "JavaScript Core Concepts",
+    "order": 74,
+    "concept": "تمر for...of على القيم نفسها في أي بنية قابلة للتكرار (مصفوفة أو نص أو Set أو Map)، بينما تمر for...in على أسماء مفاتيح الكائنات.",
+    "whyUse": "إذا لم تكن بحاجة لرقم الفهرس i، فلماذا تكتب let i = 0; i < arr.length; i++؟ حلقة for...of تقرأ القيم مباشرة مهما كان نوع المجموعة.",
+    "browserMechanics": "تستدعي حلقة for...of بروتوكول التكرار الداخلي للبيانات وتسحب القيمة التالية في كل دورة دون تعريضك لأخطاء تجاوز الفهرس.",
+    "documentationUrl": "https://www.w3schools.com/js/js_looping.asp",
+    "code": "const tools = [\"HTML\", \"CSS\", \"JavaScript\"];\nfor (let i = 0; i < tools.length; i++) {\n  console.log(i, tools[i]);\n}",
+    "breakdown": [
+      "صيغة for (const item of list): تقرأ كل قيمة مباشرة في دورة منفصلة.",
+      "دعم الكائنات المكررة: تعمل مع Arrays و Strings و Sets و Maps و NodeLists.",
+      "الفرق عن for...in: حلقة for...of تقرأ القيم، بينما for...in تقرأ أسماء المفاتيح والفهارس."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `i < tools.length` بـ `i < 2` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `i < tools.length` إلى `i < 2` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `i < 2` في درس «بروتوكول التكرار وحلقة for...of الحديثة».",
+        "from": "i < tools.length",
+        "to": "i < 2",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `i < tools.length` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «بروتوكول التكرار وحلقة for...of الحديثة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: i < 2",
+          "الحل الدقيق للخطوة: i < 2"
+        ],
+        "task": "بدّل `i < tools.length` إلى `i < 2` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `i < tools.length` وتشغيله بقيمة `i < 2`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `i < 2` بـ `i < 3` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `i < 2` إلى `i < 3` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `i < 3` في درس «بروتوكول التكرار وحلقة for...of الحديثة».",
+        "from": "i < 2",
+        "to": "i < 3",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `i < 2` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «بروتوكول التكرار وحلقة for...of الحديثة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: i < 3",
+          "الحل الدقيق للخطوة: i < 3"
+        ],
+        "task": "بدّل `i < 2` إلى `i < 3` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `i < 2` وتشغيله بقيمة `i < 3`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `i < 3` بـ `i < 4` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `i < 3` إلى `i < 4` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `i < 4` في درس «بروتوكول التكرار وحلقة for...of الحديثة».",
+        "from": "i < 3",
+        "to": "i < 4",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `i < 3` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «بروتوكول التكرار وحلقة for...of الحديثة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: i < 4",
+          "الحل الدقيق للخطوة: i < 4"
+        ],
+        "task": "بدّل `i < 3` إلى `i < 4` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `i < 3` وتشغيله بقيمة `i < 4`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let arr = ['أ', 'ب'];\nfor (let item in arr) {\n  console.log(item); // يطبع '0' و '1' الفهارس!\n}",
+      "fixedCode": "let arr = ['أ', 'ب'];\nfor (let item of arr) {\n  console.log(item); // يطبع 'أ' و 'ب' القيم!\n}",
+      "question": "لماذا طُبعت أرقام الفهارس 0 و 1 بدلاً من قيم العناصر 'أ' و 'ب'؟",
+      "explanation": "حلقة for...in تمر على أسماء الخصائص والفهارس؛ لقراءة قيم العناصر الفعلية في المصفوفات استخدم حلقة for...of.",
+      "options": [
+        "لأن الحروف العربية تتحول لأرقام في الحلقات",
+        "لأن المصفوفة arr تفتقر إلى دالة toString",
+        "لأن حلقة for...in تقرأ الفهارس، بينما حلقة for...of هي المخصصة لقراءة القيم مباشرة",
+        "لأن console.log لا تعرض سوى الأرقام مع in"
+      ],
+      "correctOptionIndex": 2
+    }
+  },
+  {
+    "id": "js-76-js-iterables",
+    "legacyId": "js:75",
+    "title": "الكائنات القابلة للتكرار (Iterables) وبروتوكول Symbol.iterator",
+    "skill": "JavaScript Core Concepts",
+    "order": 75,
+    "concept": "أي كائن يطبق بروتوكول [Symbol.iterator] يصبح قابلًا للتكرار (Iterable) مع for...of وعامل الانتشار ...؛ فالنص مثل \"CSS\" يعطي حرفًا في كل خطوة.",
+    "whyUse": "لماذا تعمل حلقة for...of على النصوص والمصفوفات وSet، لكنها ترفض الكائن العادي `{ a: 1 }` وتقول إنه غير قابل للتكرار؟",
+    "browserMechanics": "تبحث for...of تلقائيًا عن دالة [Symbol.iterator]() على الهدف؛ فإن لم تجدها رمت TypeError: is not iterable.",
+    "documentationUrl": "https://www.w3schools.com/js/js_iterables.asp",
+    "code": "for (const letter of \"CSS\") {\n  console.log(letter);\n}",
+    "breakdown": [
+      "الرمز [Symbol.iterator]: المفتاح الخاص الذي يمنح الكائن صفة القابلية للتكرار.",
+      "كائن المكرر: يعيد كائناً يملك دالة next() تعيد في كل دورة { value, done }.",
+      "معامل النشر [...iterable]: يفكك كافة عناصر الكائن القابل للتكرار داخل مصفوفة جديدة."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `\"CSS\"` بـ `\"HTML\"` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "غيّر النص من `\"CSS\"` إلى `\"HTML\"` ثم شغّل لترى كيف يعالج الكود القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `\"HTML\"` في درس «الكائنات القابلة للتكرار (Iterables) وبروتوكول Symbol.iterator».",
+        "from": "\"CSS\"",
+        "to": "\"HTML\"",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `\"CSS\"` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «الكائنات القابلة للتكرار (Iterables) وبروتوكول Symbol.iterator» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: \"HTML\"",
+          "الحل الدقيق للخطوة: \"HTML\""
+        ],
+        "task": "غيّر النص من `\"CSS\"` إلى `\"HTML\"` ثم شغّل لترى كيف يعالج الكود القيمة الجديدة.",
+        "explanation": "اختبار مدخل نصي بديل (`\"HTML\"`) يوضح أن المنطق يتفاعل مع أي قيمة تمررها له لا مع نص ثابت."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `\"HTML\"` بـ `\"قيمة جديدة\"` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "غيّر النص من `\"HTML\"` إلى `\"قيمة جديدة\"` ثم شغّل لترى كيف يعالج الكود القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `\"قيمة جديدة\"` في درس «الكائنات القابلة للتكرار (Iterables) وبروتوكول Symbol.iterator».",
+        "from": "\"HTML\"",
+        "to": "\"قيمة جديدة\"",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `\"HTML\"` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «الكائنات القابلة للتكرار (Iterables) وبروتوكول Symbol.iterator» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: \"قيمة جديدة\"",
+          "الحل الدقيق للخطوة: \"قيمة جديدة\""
+        ],
+        "task": "غيّر النص من `\"HTML\"` إلى `\"قيمة جديدة\"` ثم شغّل لترى كيف يعالج الكود القيمة الجديدة.",
+        "explanation": "اختبار مدخل نصي بديل (`\"قيمة جديدة\"`) يوضح أن المنطق يتفاعل مع أي قيمة تمررها له لا مع نص ثابت."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `\"قيمة جديدة\"` بـ `\"نتيجة أخرى\"` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "غيّر النص من `\"قيمة جديدة\"` إلى `\"نتيجة أخرى\"` ثم شغّل لترى كيف يعالج الكود القيمة الجديدة.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `\"نتيجة أخرى\"` في درس «الكائنات القابلة للتكرار (Iterables) وبروتوكول Symbol.iterator».",
+        "from": "\"قيمة جديدة\"",
+        "to": "\"نتيجة أخرى\"",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `\"قيمة جديدة\"` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «الكائنات القابلة للتكرار (Iterables) وبروتوكول Symbol.iterator» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: \"نتيجة أخرى\"",
+          "الحل الدقيق للخطوة: \"نتيجة أخرى\""
+        ],
+        "task": "غيّر النص من `\"قيمة جديدة\"` إلى `\"نتيجة أخرى\"` ثم شغّل لترى كيف يعالج الكود القيمة الجديدة.",
+        "explanation": "اختبار مدخل نصي بديل (`\"نتيجة أخرى\"`) يوضح أن المنطق يتفاعل مع أي قيمة تمررها له لا مع نص ثابت."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let range = { from: 1, to: 3 };\nfor (let n of range) console.log(n); // TypeError",
+      "fixedCode": "let range = {\n  from: 1, to: 3,\n  [Symbol.iterator]() {\n    let curr = this.from, last = this.to;\n    return { next: () => ({ value: curr, done: curr++ > last }) };\n  }\n};\nfor (let n of range) console.log(n);",
+      "question": "لماذا رمى المفسر خطأ TypeError: range is not iterable عند محاولة استخدام for...of؟",
+      "explanation": "الكائنات العادية ليست قابلة للتكرار افتراضياً؛ لتكرارها بـ for...of يجب تزويدها بدالة تحت مفتاح الرمز القياسي [Symbol.iterator].",
+      "options": [
+        "لأن حلقة for...of لا تعمل إلا مع النصوص فقط",
+        "لأن كلمة range محجوزة في لغة JavaScript",
+        "لأن الأرقام من 1 إلى 3 غير معرفة",
+        "لأن الكائن يفتقر لتطبيق بروتوكول التكرار المعياري عبر الرمز [Symbol.iterator]"
+      ],
+      "correctOptionIndex": 3
+    }
+  },
+  {
+    "id": "js-77-js-iterators",
+    "legacyId": "js:76",
+    "title": "المكررات (Iterators) ودالة الانتقال next()",
+    "skill": "JavaScript Core Concepts",
+    "order": 76,
+    "concept": "يعيد المكرّر (Iterator) عند كل استدعاء لدالة next() كائنًا من قطعتين: { value: القيمة, done: هل_انتهى }.",
+    "whyUse": "في الحلقات العادية تسحب البيانات دفعة واحدة. لكن ماذا لو أردت سحب عنصر واحد فقط كل مرة، متى احتجته، ومعرفة هل انتهت القائمة أم لا؟",
+    "browserMechanics": "يحتفظ المكرر بمؤشر داخلي لموضعه الحالي بين الاستدعاءات، حتى إذا وصل للنهاية أعاد { value: undefined, done: true }.",
+    "documentationUrl": "https://www.w3schools.com/js/js_iterators.asp",
+    "code": "const names = [\"أحمد\", \"منى\"];\nconst iterator = names[Symbol.iterator]();\nconsole.log(iterator.next().value);\nconsole.log(iterator.next().value);",
+    "breakdown": [
+      "دالة next(): المحرك الأساسي لطلب العنصر التالي في السلسلة.",
+      "خاصية { value }: تحمل القيمة الناتجة من الدورة الحالية.",
+      "خاصية { done: true/false }: تعلن للمتصفح هل ما زال هناك عناصر متبقية أم انتهت السلسلة."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `console.log(iterator.next().value);\nconsole.log(iterator.next().value);` بـ `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `console.log(iterator.next().value);\nconsole.log(iterator.next().value);` إلى `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");` في درس «المكررات (Iterators) ودالة الانتقال next()».",
+        "from": "console.log(iterator.next().value);\nconsole.log(iterator.next().value);",
+        "to": "console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `console.log(iterator.next().value);` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «المكررات (Iterators) ودالة الانتقال next()» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");",
+          "الحل الدقيق للخطوة: console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");"
+        ],
+        "task": "بدّل `console.log(iterator.next().value);\nconsole.log(iterator.next().value);` إلى `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `console.log(iterator.next().value);\nconsole.log(iterator.next().value);` وتشغيله بقيمة `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");` بـ `console.log(iterator.next().value);\nconsole.log(iterator.next().done);` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");` إلى `console.log(iterator.next().value);\nconsole.log(iterator.next().done);` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `console.log(iterator.next().value);\nconsole.log(iterator.next().done);` في درس «المكررات (Iterators) ودالة الانتقال next()».",
+        "from": "console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");",
+        "to": "console.log(iterator.next().value);\nconsole.log(iterator.next().done);",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `console.log(iterator.next().value);` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «المكررات (Iterators) ودالة الانتقال next()» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: console.log(iterator.next().value);\nconsole.log(iterator.next().done);",
+          "الحل الدقيق للخطوة: console.log(iterator.next().value);\nconsole.log(iterator.next().done);"
+        ],
+        "task": "بدّل `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");` إلى `console.log(iterator.next().value);\nconsole.log(iterator.next().done);` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `console.log(iterator.next().value);\nconsole.log(iterator.next().value + \" ثم التالي\");` وتشغيله بقيمة `console.log(iterator.next().value);\nconsole.log(iterator.next().done);`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `console.log(iterator.next().value);\nconsole.log(iterator.next().done);` بـ `console.log(iterator.next().value);\nconsole.log(iterator.next().value);` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `console.log(iterator.next().value);\nconsole.log(iterator.next().done);` إلى `console.log(iterator.next().value);\nconsole.log(iterator.next().value);` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `console.log(iterator.next().value);\nconsole.log(iterator.next().value);` في درس «المكررات (Iterators) ودالة الانتقال next()».",
+        "from": "console.log(iterator.next().value);\nconsole.log(iterator.next().done);",
+        "to": "console.log(iterator.next().value);\nconsole.log(iterator.next().value);",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `console.log(iterator.next().value);` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «المكررات (Iterators) ودالة الانتقال next()» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: console.log(iterator.next().value);\nconsole.log(iterator.next().value);",
+          "الحل الدقيق للخطوة: console.log(iterator.next().value);\nconsole.log(iterator.next().value);"
+        ],
+        "task": "بدّل `console.log(iterator.next().value);\nconsole.log(iterator.next().done);` إلى `console.log(iterator.next().value);\nconsole.log(iterator.next().value);` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `console.log(iterator.next().value);\nconsole.log(iterator.next().done);` وتشغيله بقيمة `console.log(iterator.next().value);\nconsole.log(iterator.next().value);`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let iter = ['أ'][Symbol.iterator]();\nlet step = iter.next();\nconsole.log(step.val); // يريد 'أ'",
+      "fixedCode": "let iter = ['أ'][Symbol.iterator]();\nlet step = iter.next();\nconsole.log(step.value);",
+      "question": "لماذا ظهرت القيمة undefined عند محاولة قراءة قيمة خطوة المكرر؟",
+      "explanation": "الخاصية القياسية في كائن المكرر التي تحمل القيمة الناتجة اسمها value بالكامل وليس val.",
+      "options": [
+        "لأن اسم الخاصية القياسي في بروتوكول المكرر هو value وليس val",
+        "لأن الحرف 'أ' لم يتم تخزينه في المكرر",
+        "لأن المكرر يتطلب حلقة for...of حصراً",
+        "لأن دالة next لا تعيد كائنات"
+      ],
+      "correctOptionIndex": 0
+    }
+  },
+  {
+    "id": "js-78-js-generators",
+    "legacyId": "js:77",
+    "title": "دوال التوليد (Generators) وإنتاج القيم المعلقة yield",
+    "skill": "JavaScript Core Concepts",
+    "order": 77,
+    "concept": "تُعرَّف دالة التوليد بنجمة function* وتوقف التنفيذ مؤقتًا عند كل yield لإرجاع قيمة عبر next().value حتى تنتهي.",
+    "whyUse": "الدالة العادية عندما تبدأ لا تتوقف إلا في نهايتها! لكن دالة التوليد (function*) تستطيع التوقف في منتصفها وتسليم قيمة ثم استئناف العمل من حيث توقفت.",
+    "browserMechanics": "تحفظ الدالة المولِّدة إطار تنفيذها وحالتها بين كل next() وyield دون أن تشغل خيط التنفيذ بالانتظار.",
+    "documentationUrl": "https://www.w3schools.com/js/js_generators.asp",
+    "code": "function* count() { yield 1; yield 2; }\nconst steps = count();\nconsole.log(steps.next().value);",
+    "breakdown": [
+      "العلامة النجمية function*: تميز دالة التوليد عن الدوال التقليدية.",
+      "الكلمة المفتاحية yield: توقف الدالة مؤقتاً وتخرج القيمة إلى المستدعي.",
+      "استئناف التنفيذ gen.next(): يوقظ الدالة لتتابع عملها من بعد سطر yield الأخير."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `yield 2` بـ `yield 3` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `yield 2` إلى `yield 3` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `yield 3` في درس «دوال التوليد (Generators) وإنتاج القيم المعلقة yield».",
+        "from": "yield 2",
+        "to": "yield 3",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `yield 2` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال التوليد (Generators) وإنتاج القيم المعلقة yield» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: yield 3",
+          "الحل الدقيق للخطوة: yield 3"
+        ],
+        "task": "بدّل `yield 2` إلى `yield 3` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `yield 2` وتشغيله بقيمة `yield 3`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `yield 3` بـ `yield 4` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `yield 3` إلى `yield 4` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `yield 4` في درس «دوال التوليد (Generators) وإنتاج القيم المعلقة yield».",
+        "from": "yield 3",
+        "to": "yield 4",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `yield 3` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال التوليد (Generators) وإنتاج القيم المعلقة yield» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: yield 4",
+          "الحل الدقيق للخطوة: yield 4"
+        ],
+        "task": "بدّل `yield 3` إلى `yield 4` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `yield 3` وتشغيله بقيمة `yield 4`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `yield 4` بـ `yield 5` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `yield 4` إلى `yield 5` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `yield 5` في درس «دوال التوليد (Generators) وإنتاج القيم المعلقة yield».",
+        "from": "yield 4",
+        "to": "yield 5",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `yield 4` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال التوليد (Generators) وإنتاج القيم المعلقة yield» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: yield 5",
+          "الحل الدقيق للخطوة: yield 5"
+        ],
+        "task": "بدّل `yield 4` إلى `yield 5` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `yield 4` وتشغيله بقيمة `yield 5`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "function* gen() {\n  return 1;\n  return 2;\n}\nlet g = gen();\nconsole.log(g.next().value, g.next().value);",
+      "fixedCode": "function* gen() {\n  yield 1;\n  yield 2;\n}\nlet g = gen();\nconsole.log(g.next().value, g.next().value);",
+      "question": "لماذا لم تنتج الدالة القيمة 2 في الاستدعاء الثاني وأنهت عملها فوراً؟",
+      "explanation": "كلمة return تنهي دالة التوليد نهائياً وتضع done: true؛ لتمرير القيم تباعاً مع تعليق الدالة يجب استخدام الكلمة المفتاحية yield.",
+      "options": [
+        "لأن دوال التوليد لا تقبل أكثر من رقم واحد",
+        "لأن إنتاج القيم المعلقة يتطلب استخدام كلمة yield بدلاً من return التي تنهي الدالة تماماً",
+        "لأن دالة next يجب أن تُستدعى ثلاث مرات",
+        "لأن المتغير g يجب أن يُعرف بـ const"
+      ],
+      "correctOptionIndex": 1
+    }
+  }
+]

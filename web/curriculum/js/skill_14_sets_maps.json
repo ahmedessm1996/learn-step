@@ -1,0 +1,1024 @@
+[
+  {
+    "id": "js-68-js-sets",
+    "legacyId": "js:67",
+    "title": "مجموعات البيانات الفريدة (Set) ومنع التكرار",
+    "skill": "JavaScript Core Concepts",
+    "order": 67,
+    "concept": "يحفظ كائن Set قيمًا فريدة فقط دون تكرار، ويقيس حجمه بـ .size (لا .length) ويفحص وجود العنصر بسرعة عبر .has().",
+    "whyUse": "لو أردت حفظ قائمة أوسمة أو زوار فريدين دون أي تكرار، المصفوفة تجبرك على البحث قبل كل إضافة. المجموعة Set ترفض التكرار بطبيعتها!",
+    "browserMechanics": "يعتمد Set على جدول تجزئة داخلي (Hash Table) ما يجعل فحص has() أسرع بكثير من البحث الخطي في مصفوفة كبيرة.",
+    "documentationUrl": "https://www.w3schools.com/js/js_sets.asp",
+    "code": "const tools = new Set([\"HTML\", \"CSS\"]);\nconsole.log(tools.has(\"CSS\"));",
+    "breakdown": [
+      "أمر new Set(): ينشئ مجموعة جديدة خالية من التكرار في الذاكرة.",
+      "خاصية size: تعيد عدد العناصر الفريدة المخزنة (بديلاً لخاصية length).",
+      "إزالة التكرار التلقائية: إضافة نفس القيمة 5 مرات يبقي منها نسخة واحدة فقط."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `tools.has(\"CSS\")` بـ `tools.has(\"JavaScript\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `tools.has(\"CSS\")` إلى `tools.has(\"JavaScript\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `tools.has(\"JavaScript\")` في درس «مجموعات البيانات الفريدة (Set) ومنع التكرار».",
+        "from": "tools.has(\"CSS\")",
+        "to": "tools.has(\"JavaScript\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `tools.has(\"CSS\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «مجموعات البيانات الفريدة (Set) ومنع التكرار» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: tools.has(\"JavaScript\")",
+          "الحل الدقيق للخطوة: tools.has(\"JavaScript\")"
+        ],
+        "task": "بدّل `tools.has(\"CSS\")` إلى `tools.has(\"JavaScript\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `tools.has(\"CSS\")` وتشغيله بقيمة `tools.has(\"JavaScript\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `tools.has(\"JavaScript\")` بـ `tools.has(\"HTML\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `tools.has(\"JavaScript\")` إلى `tools.has(\"HTML\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `tools.has(\"HTML\")` في درس «مجموعات البيانات الفريدة (Set) ومنع التكرار».",
+        "from": "tools.has(\"JavaScript\")",
+        "to": "tools.has(\"HTML\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `tools.has(\"JavaScript\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «مجموعات البيانات الفريدة (Set) ومنع التكرار» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: tools.has(\"HTML\")",
+          "الحل الدقيق للخطوة: tools.has(\"HTML\")"
+        ],
+        "task": "بدّل `tools.has(\"JavaScript\")` إلى `tools.has(\"HTML\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `tools.has(\"JavaScript\")` وتشغيله بقيمة `tools.has(\"HTML\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `tools.has(\"HTML\")` بـ `tools.has(\"CSS\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `tools.has(\"HTML\")` إلى `tools.has(\"CSS\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `tools.has(\"CSS\")` في درس «مجموعات البيانات الفريدة (Set) ومنع التكرار».",
+        "from": "tools.has(\"HTML\")",
+        "to": "tools.has(\"CSS\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `tools.has(\"HTML\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «مجموعات البيانات الفريدة (Set) ومنع التكرار» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: tools.has(\"CSS\")",
+          "الحل الدقيق للخطوة: tools.has(\"CSS\")"
+        ],
+        "task": "بدّل `tools.has(\"HTML\")` إلى `tools.has(\"CSS\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `tools.has(\"HTML\")` وتشغيله بقيمة `tools.has(\"CSS\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let s = new Set([1, 2, 2, 3]);\nconsole.log(s.length); // يريد معرفة عدد العناصر",
+      "fixedCode": "let s = new Set([1, 2, 2, 3]);\nconsole.log(s.size);",
+      "question": "لماذا طُبعت القيمة undefined عند محاولة قراءة طول المجموعة؟",
+      "explanation": "كائن Set لا يملك خاصية length؛ الخاصية القياسية لمعرفة عدد العناصر في Set هي size.",
+      "options": [
+        "لأن Set لا تحتوي على أي عناصر",
+        "لأن الأرقام يجب أن تُحول إلى نصوص في Set",
+        "لأن التكرار منع قراءة المجموعة",
+        "لأن كائن Set يستخدم الخاصية size لمعرفة عدد العناصر وليس length"
+      ],
+      "correctOptionIndex": 3
+    }
+  },
+  {
+    "id": "js-69-js-set-methods",
+    "legacyId": "js:68",
+    "title": "دوال المجموعة (Set Methods: Add, Has, Delete)",
+    "skill": "JavaScript Core Concepts",
+    "order": 68,
+    "concept": "تضيف set.add(val) القيمة إن لم تكن موجودة، وتتحقق set.has(val) من وجودها، وتحذف set.delete(val) العنصر المحدد، مع values() للتكرار.",
+    "whyUse": "المصفوفة تضيف بـ push وتطول بـ length، أما المجموعة Set فلها لغة أبسط: add للإضافة، وhas للفحص، وdelete للحذف.",
+    "browserMechanics": "تحفظ Set ترتيب الإدخال الأول لكل عنصر فريد، وتتجاهل بصمت أي محاولة لإضافة قيمة موجودة مسبقًا.",
+    "documentationUrl": "https://www.w3schools.com/js/js_set_methods.asp",
+    "code": "const tools = new Set([\"HTML\", \"CSS\"]);\ntools.add(\"JavaScript\");\nconsole.log(tools.has(\"JavaScript\"));",
+    "breakdown": [
+      "دالة add(value): تضيف القيمة وتعيد كائن Set نفسه مما يسمح بالسلسلة (Chaining).",
+      "دالة has(value): تعيد true بسرعة O(1) إذا كانت القيمة مسجلة داخل المجموعة.",
+      "دالة delete(value): تحذف القيمة وتعيد true إذا كانت موجودة وتم حذفها بالفعل."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `tools.has(\"JavaScript\")` بـ `tools.has(\"CSS\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `tools.has(\"JavaScript\")` إلى `tools.has(\"CSS\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `tools.has(\"CSS\")` في درس «دوال المجموعة (Set Methods: Add, Has, Delete)».",
+        "from": "tools.has(\"JavaScript\")",
+        "to": "tools.has(\"CSS\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `tools.has(\"JavaScript\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال المجموعة (Set Methods: Add, Has, Delete)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: tools.has(\"CSS\")",
+          "الحل الدقيق للخطوة: tools.has(\"CSS\")"
+        ],
+        "task": "بدّل `tools.has(\"JavaScript\")` إلى `tools.has(\"CSS\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `tools.has(\"JavaScript\")` وتشغيله بقيمة `tools.has(\"CSS\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `tools.has(\"CSS\")` بـ `tools.delete(\"CSS\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `tools.has(\"CSS\")` إلى `tools.delete(\"CSS\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `tools.delete(\"CSS\")` في درس «دوال المجموعة (Set Methods: Add, Has, Delete)».",
+        "from": "tools.has(\"CSS\")",
+        "to": "tools.delete(\"CSS\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `tools.has(\"CSS\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال المجموعة (Set Methods: Add, Has, Delete)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: tools.delete(\"CSS\")",
+          "الحل الدقيق للخطوة: tools.delete(\"CSS\")"
+        ],
+        "task": "بدّل `tools.has(\"CSS\")` إلى `tools.delete(\"CSS\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `tools.has(\"CSS\")` وتشغيله بقيمة `tools.delete(\"CSS\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `tools.delete(\"CSS\")` بـ `tools.has(\"HTML\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `tools.delete(\"CSS\")` إلى `tools.has(\"HTML\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `tools.has(\"HTML\")` في درس «دوال المجموعة (Set Methods: Add, Has, Delete)».",
+        "from": "tools.delete(\"CSS\")",
+        "to": "tools.has(\"HTML\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `tools.delete(\"CSS\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال المجموعة (Set Methods: Add, Has, Delete)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: tools.has(\"HTML\")",
+          "الحل الدقيق للخطوة: tools.has(\"HTML\")"
+        ],
+        "task": "بدّل `tools.delete(\"CSS\")` إلى `tools.has(\"HTML\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `tools.delete(\"CSS\")` وتشغيله بقيمة `tools.has(\"HTML\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let tags = new Set();\ntags.push('أخبار');",
+      "fixedCode": "let tags = new Set();\ntags.add('أخبار');",
+      "question": "لماذا أظهر مفسر JavaScript خطأ TypeError: tags.push is not a function؟",
+      "explanation": "دالة إضافة العناصر في كائن Set هي add() وليست push() المخصصة للمصفوفات.",
+      "options": [
+        "لأن إضافة العناصر في كائن Set تتم عبر دالة add() وليس push()",
+        "لأن كلمة أخبار نصية ولا تقبل التخزين في Set",
+        "لأن Set تتطلب مصفوفة أولية دائماً",
+        "لأن push تعمل مع الكائنات العادية فقط"
+      ],
+      "correctOptionIndex": 0
+    }
+  },
+  {
+    "id": "js-70-js-set-logic",
+    "legacyId": "js:69",
+    "title": "العمليات الرياضية على المجموعات (Set Logic: Union & Intersection)",
+    "skill": "JavaScript Core Concepts",
+    "order": 69,
+    "concept": "نستطيع حساب التقاطع والفرق والاتحاد بتحويل المجموعة [...enrolled] مع filter() وفحص !completed.has(tool) (إضافةً لدوال Set الحديثة مثل difference).",
+    "whyUse": "عندك قائمة المهارات المطلوبة وقائمة ما أنهيته حتى الآن؛ كيف تستخرج في سطر واحد المهارات المتبقية أو المشتركة بينهما؟",
+    "browserMechanics": "تحويل Set إلى مصفوفة عبر عامل الانتشار ... يفتح المجال لكل دوال التصفية بينما يظل فحص العضوية .has() لحظيًا.",
+    "documentationUrl": "https://www.w3schools.com/js/js_set_logic.asp",
+    "code": "const enrolled = new Set([\"HTML\", \"CSS\", \"JavaScript\"]);\nconst completed = new Set([\"HTML\", \"CSS\"]);\nconst remaining = [...enrolled].filter(tool => !completed.has(tool));\nconsole.log(remaining);",
+    "breakdown": [
+      "عملية الاتحاد (Union): تجمع كافة العناصر من المجموعتين مع إزالة أي تكرار.",
+      "عملية التقاطع (Intersection): تستخلص فقط العناصر المشتركة الموجودة في كلا المجموعتين.",
+      "عملية الفرق (Difference): تستخرج العناصر الموجودة في المجموعة الأولى وغير موجودة في الثانية."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `!completed.has(tool)` بـ `completed.has(tool)` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `!completed.has(tool)` إلى `completed.has(tool)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `completed.has(tool)` في درس «العمليات الرياضية على المجموعات (Set Logic: Union & Intersection)».",
+        "from": "!completed.has(tool)",
+        "to": "completed.has(tool)",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `!completed.has(tool)` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «العمليات الرياضية على المجموعات (Set Logic: Union & Intersection)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: completed.has(tool)",
+          "الحل الدقيق للخطوة: completed.has(tool)"
+        ],
+        "task": "بدّل `!completed.has(tool)` إلى `completed.has(tool)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `!completed.has(tool)` وتشغيله بقيمة `completed.has(tool)`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `completed.has(tool)` بـ `!completed.has(tool)` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `completed.has(tool)` إلى `!completed.has(tool)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `!completed.has(tool)` في درس «العمليات الرياضية على المجموعات (Set Logic: Union & Intersection)».",
+        "from": "completed.has(tool)",
+        "to": "!completed.has(tool)",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `completed.has(tool)` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «العمليات الرياضية على المجموعات (Set Logic: Union & Intersection)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: !completed.has(tool)",
+          "الحل الدقيق للخطوة: !completed.has(tool)"
+        ],
+        "task": "بدّل `completed.has(tool)` إلى `!completed.has(tool)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `completed.has(tool)` وتشغيله بقيمة `!completed.has(tool)`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `!completed.has(tool)` بـ `completed.has(tool)` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `!completed.has(tool)` إلى `completed.has(tool)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `completed.has(tool)` في درس «العمليات الرياضية على المجموعات (Set Logic: Union & Intersection)».",
+        "from": "!completed.has(tool)",
+        "to": "completed.has(tool)",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `!completed.has(tool)` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «العمليات الرياضية على المجموعات (Set Logic: Union & Intersection)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: completed.has(tool)",
+          "الحل الدقيق للخطوة: completed.has(tool)"
+        ],
+        "task": "بدّل `!completed.has(tool)` إلى `completed.has(tool)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `!completed.has(tool)` وتشغيله بقيمة `completed.has(tool)`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let a = new Set([1, 2]);\nlet b = new Set([2, 3]);\nlet common = [...a].filter(x => b.contains(x));",
+      "fixedCode": "let a = new Set([1, 2]);\nlet b = new Set([2, 3]);\nlet common = [...a].filter(x => b.has(x));",
+      "question": "لماذا رمى الكود خطأ TypeError: b.contains is not a function؟",
+      "explanation": "الدالة القياسية لفحص وجود عنصر داخل Set هي has() وليست contains().",
+      "options": [
+        "لأن المجموعات لا تدعم دالة filter",
+        "لأن الدالة القياسية لفحص القيمة في Set هي has() وليس contains()",
+        "لأن الأرقام لا يمكن إيجاد التقاطع بينها",
+        "لأن معامل النشر ... غير مسموح مع Set"
+      ],
+      "correctOptionIndex": 1
+    }
+  },
+  {
+    "id": "js-71-js-weakset",
+    "legacyId": "js:70",
+    "title": "المجموعات الضعيفة (WeakSet) وإدارة الذاكرة",
+    "skill": "JavaScript Core Concepts",
+    "order": 70,
+    "concept": "تقبل WeakSet الكائنات فقط كقيم (وليس نصوصًا أو أرقامًا)، وتسمح بـ add وhas وdelete مع ملاحظة أن مقارنة الكائنات تعتمد على نفس المرجع في الذاكرة.",
+    "whyUse": "إذا خزّنت كائنات DOM أو جلسات مستخدمين داخل Set عادية ثم حذفت من الصفحة، تبقى عالقة في الذاكرة! كيف تتابع كائنات مؤقتة دون تسريب ذاكرة؟",
+    "browserMechanics": "تحتفظ WeakSet بمرجع ضعيف للكائن؛ فبمجرد عدم وجود أي مرجع آخر له يزيله جامع القمامة (Garbage Collector) تلقائيًا.",
+    "documentationUrl": "https://www.w3schools.com/js/js_sets_weak.asp",
+    "code": "const member = { name: \"ليلى\" };\nconst enrolled = new WeakSet([member]);\nconsole.log(enrolled.has(member));",
+    "breakdown": [
+      "تخزين الكائنات فقط: محاولة إضافة قيمة أولية مثل رقم أو نص ترمي TypeError فورياً.",
+      "المراجع الضعيفة: تسمح لجامع القمامة بتنظيف الذاكرة تلقائياً عند التخلص من الكائن الأصلي.",
+      "غياب التكرار: لا يمكن سرد العناصر لأن محتواها غير مضمون البقاء في الذاكرة."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `enrolled.has(member)` بـ `enrolled.has({ name: \"ليلى\" })` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `enrolled.has(member)` إلى `enrolled.has({ name: \"ليلى\" })` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `enrolled.has({ name: \"ليلى\" })` في درس «المجموعات الضعيفة (WeakSet) وإدارة الذاكرة».",
+        "from": "enrolled.has(member)",
+        "to": "enrolled.has({ name: \"ليلى\" })",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `enrolled.has(member)` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «المجموعات الضعيفة (WeakSet) وإدارة الذاكرة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: enrolled.has({ name: \"ليلى\" })",
+          "الحل الدقيق للخطوة: enrolled.has({ name: \"ليلى\" })"
+        ],
+        "task": "بدّل `enrolled.has(member)` إلى `enrolled.has({ name: \"ليلى\" })` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `enrolled.has(member)` وتشغيله بقيمة `enrolled.has({ name: \"ليلى\" })`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `enrolled.has({ name: \"ليلى\" })` بـ `enrolled.has(member)` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `enrolled.has({ name: \"ليلى\" })` إلى `enrolled.has(member)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `enrolled.has(member)` في درس «المجموعات الضعيفة (WeakSet) وإدارة الذاكرة».",
+        "from": "enrolled.has({ name: \"ليلى\" })",
+        "to": "enrolled.has(member)",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `enrolled.has({ name: \"ليلى\" })` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «المجموعات الضعيفة (WeakSet) وإدارة الذاكرة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: enrolled.has(member)",
+          "الحل الدقيق للخطوة: enrolled.has(member)"
+        ],
+        "task": "بدّل `enrolled.has({ name: \"ليلى\" })` إلى `enrolled.has(member)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `enrolled.has({ name: \"ليلى\" })` وتشغيله بقيمة `enrolled.has(member)`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `enrolled.has(member)` بـ `enrolled.add(member)` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `enrolled.has(member)` إلى `enrolled.add(member)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `enrolled.add(member)` في درس «المجموعات الضعيفة (WeakSet) وإدارة الذاكرة».",
+        "from": "enrolled.has(member)",
+        "to": "enrolled.add(member)",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `enrolled.has(member)` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «المجموعات الضعيفة (WeakSet) وإدارة الذاكرة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: enrolled.add(member)",
+          "الحل الدقيق للخطوة: enrolled.add(member)"
+        ],
+        "task": "بدّل `enrolled.has(member)` إلى `enrolled.add(member)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `enrolled.has(member)` وتشغيله بقيمة `enrolled.add(member)`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let ws = new WeakSet();\nws.add('مرحبا');",
+      "fixedCode": "let ws = new WeakSet();\nlet obj = { text: 'مرحبا' };\nws.add(obj);",
+      "question": "لماذا رمى المفسر خطأ TypeError: Invalid value used in weak set؟",
+      "explanation": "كائن WeakSet يقبل كائنات (Objects) فقط كمراجع؛ ولا يقبل القيم الأولية مثل النصوص أو الأرقام.",
+      "options": [
+        "لأن كلمة مرحبا تحتوي حروفاً عربية",
+        "لأن add ليست دالة في WeakSet",
+        "لأن WeakSet لا تقبل سوى الكائنات (Objects) وترفض القيم الأولية كالنصوص والأرقام",
+        "لأن WeakSet تتطلب تحديد الحجم مسبقاً"
+      ],
+      "correctOptionIndex": 2
+    }
+  },
+  {
+    "id": "js-72-js-maps",
+    "legacyId": "js:71",
+    "title": "خرائط البيانات (Map) ومرونة المفاتيح",
+    "skill": "JavaScript Core Concepts",
+    "order": 71,
+    "concept": "تحفظ Map أزواج [مفتاح، قيمة] مع أي نوع للمفتاح (نص أو رقم أو كائن)، وتحفظ ترتيب الإدخال، وتُقرأ وتُحدّث بدوال واضحة مثل get وset.",
+    "whyUse": "الكائن العادي يحول كل مفاتيحه إلى نصوص ولا يحفظ ترتيب الأرقام، وقد يصطدم بأسماء موروثة مثل toString. الخريطة Map تحل كل ذلك!",
+    "browserMechanics": "تعزل Map مفاتيح البيانات عن خصائص النموذج الأولي (Prototype) وتقيس عدد أزواجها عبر .size مباشرة.",
+    "documentationUrl": "https://www.w3schools.com/js/js_maps.asp",
+    "code": "const lesson = new Map([[\"next\", \"CSS\"]]);\nconsole.log(lesson.get(\"next\"));",
+    "breakdown": [
+      "أمر new Map(): ينشئ خريطة بيانات حديثة ومرنة في الذاكرة.",
+      "المفاتيح المتنوعة: إمكانية استخدام كائن DOM أو رقم كمفتاح للبحث.",
+      "الحفاظ على الترتيب: تكرار عناصر Map يضمن استرجاعها بنفس ترتيب إدخالها الأصلي."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `[[\"next\", \"CSS\"]]);\nconsole.log(lesson.get(\"next\"))` بـ `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `[[\"next\", \"CSS\"]]);\nconsole.log(lesson.get(\"next\"))` إلى `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))` في درس «خرائط البيانات (Map) ومرونة المفاتيح».",
+        "from": "[[\"next\", \"CSS\"]]);\nconsole.log(lesson.get(\"next\"))",
+        "to": "[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `[[\"next\", \"CSS\"]]);` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «خرائط البيانات (Map) ومرونة المفاتيح» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: [[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))",
+          "الحل الدقيق للخطوة: [[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))"
+        ],
+        "task": "بدّل `[[\"next\", \"CSS\"]]);\nconsole.log(lesson.get(\"next\"))` إلى `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `[[\"next\", \"CSS\"]]);\nconsole.log(lesson.get(\"next\"))` وتشغيله بقيمة `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))` بـ `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))` إلى `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))` في درس «خرائط البيانات (Map) ومرونة المفاتيح».",
+        "from": "[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))",
+        "to": "[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `[[\"later\", \"CSS\"]]);` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «خرائط البيانات (Map) ومرونة المفاتيح» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: [[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))",
+          "الحل الدقيق للخطوة: [[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))"
+        ],
+        "task": "بدّل `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))` إلى `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `[[\"later\", \"CSS\"]]);\nconsole.log(lesson.get(\"later\"))` وتشغيله بقيمة `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))` بـ `[[\"start\", \"JavaScript\"]]);\nconsole.log(lesson.get(\"start\"))` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))` إلى `[[\"start\", \"JavaScript\"]]);\nconsole.log(lesson.get(\"start\"))` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `[[\"start\", \"JavaScript\"]]);\nconsole.log(lesson.get(\"start\"))` في درس «خرائط البيانات (Map) ومرونة المفاتيح».",
+        "from": "[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))",
+        "to": "[[\"start\", \"JavaScript\"]]);\nconsole.log(lesson.get(\"start\"))",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `[[\"later\", \"HTML\"]]);` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «خرائط البيانات (Map) ومرونة المفاتيح» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: [[\"start\", \"JavaScript\"]]);\nconsole.log(lesson.get(\"start\"))",
+          "الحل الدقيق للخطوة: [[\"start\", \"JavaScript\"]]);\nconsole.log(lesson.get(\"start\"))"
+        ],
+        "task": "بدّل `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))` إلى `[[\"start\", \"JavaScript\"]]);\nconsole.log(lesson.get(\"start\"))` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `[[\"later\", \"HTML\"]]);\nconsole.log(lesson.get(\"later\"))` وتشغيله بقيمة `[[\"start\", \"JavaScript\"]]);\nconsole.log(lesson.get(\"start\"))`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let m = new Map();\nm['name'] = 'عمر';\nconsole.log(m.size); // يطبع 0!",
+      "fixedCode": "let m = new Map();\nm.set('name', 'عمر');\nconsole.log(m.size);",
+      "question": "لماذا بقي حجم الخريطة size يساوي 0 رغم محاولة تخزين القيمة 'عمر'؟",
+      "explanation": "استخدام الأقواس المربعة m['name'] يضيف الخاصية ككائن عادي ولا يدخلها في بنية الخريطة؛ لتخزين القيم في Map يجب استخدام دالة set().",
+      "options": [
+        "لأن Map لا تقبل المفاتيح النصية",
+        "لأن خاصية size معطلة في الوضع الافتراضي",
+        "لأن المتغير m يجب أن يكون ثابتاً const",
+        "لأن إدخال البيانات في Map يتطلب استخدام دالة set() حصراً لتسجيلها في جدول الخريطة"
+      ],
+      "correctOptionIndex": 3
+    }
+  },
+  {
+    "id": "js-73-js-map-methods",
+    "legacyId": "js:72",
+    "title": "دوال الخريطة (Map Methods: Set, Get, Delete)",
+    "skill": "JavaScript Core Concepts",
+    "order": 72,
+    "concept": "نضيف ونعدل في Map عبر .set(key, val)، ونقرأ بـ .get(key)، ونتحقق بـ .has(key)، ونحذف بـ .delete(key) وبذلك يبقى .size دقيقًا دائمًا.",
+    "whyUse": "في الخريطة Map، هل تحفظ قيمة المفتاح مباشرة بـ map[key] = val؟ انتبه: هذا يكتب على الكائن العام للخريطة وليس داخل بيانات Map الحقيقية!",
+    "browserMechanics": "تتفاعل دوال set وget وhas وحدها مع بنية التخزين الداخلية للخريطة؛ بينما الإسناد بالأقواس [] يتعامل معها ككائن عادي دون تحديث الخريطة.",
+    "documentationUrl": "https://www.w3schools.com/js/js_map_methods.asp",
+    "code": "const lesson = new Map();\nlesson.set(\"next\", \"CSS\");\nconsole.log(lesson.get(\"next\"));",
+    "breakdown": [
+      "دالة set(key, val): تضيف أو تحدث الزوج وتعيد كائن الخريطة نفسه.",
+      "دالة get(key): تعيد القيمة المخزنة المقابلة للمفتاح أو undefined إذا لم تجده.",
+      "دالة has(key): تتحقق من وجود المفتاح دون الحاجة لقراءة قيمته الكاملة."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `lesson.get(\"next\")` بـ `lesson.has(\"next\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `lesson.get(\"next\")` إلى `lesson.has(\"next\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `lesson.has(\"next\")` في درس «دوال الخريطة (Map Methods: Set, Get, Delete)».",
+        "from": "lesson.get(\"next\")",
+        "to": "lesson.has(\"next\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `lesson.get(\"next\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال الخريطة (Map Methods: Set, Get, Delete)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: lesson.has(\"next\")",
+          "الحل الدقيق للخطوة: lesson.has(\"next\")"
+        ],
+        "task": "بدّل `lesson.get(\"next\")` إلى `lesson.has(\"next\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `lesson.get(\"next\")` وتشغيله بقيمة `lesson.has(\"next\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `lesson.has(\"next\")` بـ `lesson.get(\"next\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `lesson.has(\"next\")` إلى `lesson.get(\"next\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `lesson.get(\"next\")` في درس «دوال الخريطة (Map Methods: Set, Get, Delete)».",
+        "from": "lesson.has(\"next\")",
+        "to": "lesson.get(\"next\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `lesson.has(\"next\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال الخريطة (Map Methods: Set, Get, Delete)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: lesson.get(\"next\")",
+          "الحل الدقيق للخطوة: lesson.get(\"next\")"
+        ],
+        "task": "بدّل `lesson.has(\"next\")` إلى `lesson.get(\"next\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `lesson.has(\"next\")` وتشغيله بقيمة `lesson.get(\"next\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `lesson.get(\"next\")` بـ `lesson.delete(\"next\")` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `lesson.get(\"next\")` إلى `lesson.delete(\"next\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `lesson.delete(\"next\")` في درس «دوال الخريطة (Map Methods: Set, Get, Delete)».",
+        "from": "lesson.get(\"next\")",
+        "to": "lesson.delete(\"next\")",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `lesson.get(\"next\")` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «دوال الخريطة (Map Methods: Set, Get, Delete)» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: lesson.delete(\"next\")",
+          "الحل الدقيق للخطوة: lesson.delete(\"next\")"
+        ],
+        "task": "بدّل `lesson.get(\"next\")` إلى `lesson.delete(\"next\")` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `lesson.get(\"next\")` وتشغيله بقيمة `lesson.delete(\"next\")`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let userRoles = new Map();\nuserRoles.set('أحمد', 'مشرف');\nlet role = userRoles.find('أحمد');",
+      "fixedCode": "let userRoles = new Map();\nuserRoles.set('أحمد', 'مشرف');\nlet role = userRoles.get('أحمد');",
+      "question": "لماذا رمى المفسر خطأ TypeError: userRoles.find is not a function؟",
+      "explanation": "الدالة القياسية لاسترجاع قيمة من كائن Map بواسطة المفتاح هي get() وليست find().",
+      "options": [
+        "لأن قراءة القيم في كائن Map تتم عبر دالة get() وليس find()",
+        "لأن المفاتيح العربية غير مدعومة في Map",
+        "لأن الخريطة userRoles فارغة في الذاكرة",
+        "لأن get مخصصة للمصفوفات فقط"
+      ],
+      "correctOptionIndex": 0
+    }
+  },
+  {
+    "id": "js-74-js-weakmap",
+    "legacyId": "js:73",
+    "title": "الخرائط الضعيفة (WeakMap) وتخزين البيانات الخاصة",
+    "skill": "JavaScript Core Concepts",
+    "order": 73,
+    "concept": "تشترط WeakMap أن يكون كل مفتاح فيها كائنًا (لا نصًا ولا رقمًا) مثل notes.set(learner, \"CSS\")، فتُربط المعلومة بدورة حياة الكائن.",
+    "whyUse": "كيف تربط بيانات خاصة بكائن معين دون تعديل الكائن نفسه ودون أن تمنع الذاكرة من تنظيفه عندما ينتهي دوره؟",
+    "browserMechanics": "بمجرد اختفاء الكائن المفتاح من بقية البرنامج يحرّر جامع القمامة المفتاح وقيمته في WeakMap تلقائيًا.",
+    "documentationUrl": "https://www.w3schools.com/js/js_maps_weak.asp",
+    "code": "const learner = { id: 1 };\nconst notes = new WeakMap();\nnotes.set(learner, \"CSS\");\nconsole.log(notes.get(learner));",
+    "breakdown": [
+      "المفاتيح كائنات فقط: المفتاح يجب أن يكون Object (محاولة وضع نص كمفتاح ترمي خطأ).",
+      "حماية الذاكرة من التسريب: تحذف البيانات المرتبطة تلقائياً فور فقدان مرجع الكائن الأصلي.",
+      "حفظ الخصوصية: لا يمكن قراءة القيمة إلا لمن يملك المرجع الدقيق لنفس الكائن المفتاح."
+    ],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "الخطوة الأولى: غيّر ولاحظ",
+        "objective": "استبدال `notes.get(learner)` بـ `notes.has(learner)` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `notes.get(learner)` إلى `notes.has(learner)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `notes.has(learner)` في درس «الخرائط الضعيفة (WeakMap) وتخزين البيانات الخاصة».",
+        "from": "notes.get(learner)",
+        "to": "notes.has(learner)",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `notes.get(learner)` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «الخرائط الضعيفة (WeakMap) وتخزين البيانات الخاصة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: notes.has(learner)",
+          "الحل الدقيق للخطوة: notes.has(learner)"
+        ],
+        "task": "بدّل `notes.get(learner)` إلى `notes.has(learner)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `notes.get(learner)` وتشغيله بقيمة `notes.has(learner)`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-2",
+        "title": "الخطوة الثانية: اختبر حالة أخرى",
+        "objective": "استبدال `notes.has(learner)` بـ `notes.get(learner)` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `notes.has(learner)` إلى `notes.get(learner)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `notes.get(learner)` في درس «الخرائط الضعيفة (WeakMap) وتخزين البيانات الخاصة».",
+        "from": "notes.has(learner)",
+        "to": "notes.get(learner)",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `notes.has(learner)` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «الخرائط الضعيفة (WeakMap) وتخزين البيانات الخاصة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: notes.get(learner)",
+          "الحل الدقيق للخطوة: notes.get(learner)"
+        ],
+        "task": "بدّل `notes.has(learner)` إلى `notes.get(learner)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `notes.has(learner)` وتشغيله بقيمة `notes.get(learner)`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      },
+      {
+        "id": "step-3",
+        "title": "الخطوة الثالثة: أكّد السلوك",
+        "objective": "استبدال `notes.get(learner)` بـ `notes.delete(learner)` وملاحظة أثره في ناتج التنفيذ",
+        "type": "edit",
+        "instruction": "بدّل `notes.get(learner)` إلى `notes.delete(learner)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "benefit": "فائدة ما جرّبته: اختبرت عمليًا استجابة الكود عند تمرير `notes.delete(learner)` في درس «الخرائط الضعيفة (WeakMap) وتخزين البيانات الخاصة».",
+        "from": "notes.get(learner)",
+        "to": "notes.delete(learner)",
+        "errorRules": [
+          {
+            "pattern": "\\b(consol|conosle|cosnole|cosole)\\.log\\b",
+            "flags": "i",
+            "type": "regex",
+            "message": "خطأ إملائي في كتابة كائن الطباعة console. الكلمة الصحيحة هي console.log(...)."
+          },
+          {
+            "pattern": "\\bif\\s*\\([^)]*?[^!=<>]=[^=][^)]*?\\)",
+            "flags": "i",
+            "type": "regex",
+            "message": "استخدمت علامة مساواة مفردة '=' داخل شرط if. علامة '=' تعني إسناد قيمة، بينما المقارنة تتطلب '===' أو '=='."
+          },
+          {
+            "pattern": "\\([^)]*$",
+            "flags": "",
+            "type": "regex",
+            "message": "فتحت قوس استدعاء دالة أو شرط '(' دون إغلاقه بقوس المقابلة ')'."
+          }
+        ],
+        "hints": [
+          "دقّق في السطر الذي يحمل `notes.get(learner)` — المطلوب استبدال هذا الجزء وحده دون تغيير بقية البنية.",
+          "لماذا يعتمد سلوك درس «الخرائط الضعيفة (WeakMap) وتخزين البيانات الخاصة» على هذه القيمة؟ لأن محرك JavaScript يقرأ هذا التعبير عند التنفيذ؛ هل تأكدت من كتابة الرموز وعلامات التنصيص والأقواس بدقة؟",
+          "عدّل الجزء المستهدف في السطر ليصبح: notes.delete(learner)",
+          "الحل الدقيق للخطوة: notes.delete(learner)"
+        ],
+        "task": "بدّل `notes.get(learner)` إلى `notes.delete(learner)` ثم شغّل وراقب كيف تتغير المخرجات.",
+        "explanation": "لاحظ الفارق بين تشغيل الكود بقيمة `notes.get(learner)` وتشغيله بقيمة `notes.delete(learner)`؛ هذا التغيير البسيط يكشف كيف يقرأ المحرك هذا السطر."
+      }
+    ],
+    "bugRepair": {
+      "brokenCode": "let wm = new WeakMap();\nwm.set('key1', 'بيانات');",
+      "fixedCode": "let wm = new WeakMap();\nlet k = {};\nwm.set(k, 'بيانات');",
+      "question": "لماذا رفض كائن WeakMap تسجيل المفتاح 'key1' وأظهر خطأ TypeError؟",
+      "explanation": "في WeakMap، المفاتيح يجب أن تكون كائنات (Objects) حصراً؛ ولا تقبل القيم الأولية مثل النصوص أو الأرقام كمفاتيح.",
+      "options": [
+        "لأن القيمة 'بيانات' غير صالحة",
+        "لأن مفاتيح WeakMap يجب أن تكون كائنات Objects ولا تقبل نصوصاً أولية",
+        "لأن set ليست دالة في WeakMap",
+        "لأن WeakMap تتطلب مصفوفة في تعريفها"
+      ],
+      "correctOptionIndex": 1
+    }
+  }
+]
